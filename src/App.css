@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  font-family: 'bahnschrift';
 }
 
 .App-logo {
@@ -35,4 +35,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.bg{
+  background-color: #095DB7;
+  padding:3%;
+  margin-top: -1.7%;
+  border-radius: 10px;
+}
+
+.logo_nav{
+  display: block;
+  max-width: 50%; 
+  max-height: auto;
+  padding: 0%;
+}
+
+.pfp{
+  font-size: 0; /* Puede no ser necesario si solo se aplica a imágenes */
+  display: block;
+  border-radius: 50%;
+  height: auto;
+  margin: 0; /* Asegura que no haya márgenes */
+  padding: 0;
+}
+
+.UsCard{
+  margin: 5%;
+}
+
+.UCard{
+  background-color: #3A95B5;
 }
