@@ -67,3 +67,38 @@
 .UCard{
   background-color: #3A95B5;
 }
+
+.Cardpfp{
+  float: right;
+  border-radius: 50%;
+}
+/*
+.IntButton{
+  --bs-btn-color: #3A95B5; 
+  --bs-btn-bg: #095DB7; 
+  --bs-btn-border-color: #095DB7; 
+  --bs-btn-hover-color: #3A95B5; 
+  --bs-btn-hover-bg: #095DB7; 
+  --bs-btn-hover-border-color: #095DB7; 
+  --bs-btn-focus-shadow-rgb: 49, 132, 253; 
+  --bs-btn-active-color: #3A95B5; 
+  --bs-btn-active-bg: #095DB7; 
+  --bs-btn-active-border-color: #095DB7;
+}
+
+.btn-primary {
+  --bs-btn-color: #3A95B5;
+  --bs-btn-bg: #095DB7;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-color: #3A95B5;
+  --bs-btn-hover-bg: #095DB7;
+  --bs-btn-hover-border-color: #095DB7;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #3A95B5;
+  --bs-btn-active-bg: #095DB7;
+  --bs-btn-active-border-color: #095DB7;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #3A95B5;
+  --bs-btn-disabled-bg: #095DB7;
+  --bs-btn-disabled-border-color: #095DB7;
+}*/

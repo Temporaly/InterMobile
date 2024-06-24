@@ -1,7 +1,8 @@
 import './App.css';
 import Header from './components/Header.js'
 import UserCard from './components/Card.js'
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
+import './bootstrap.css';
 import './App.css'
 
 function App() {
