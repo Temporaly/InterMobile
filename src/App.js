@@ -21,5 +21,5 @@ function App() {
     </div>
   );
 }
-
+//Supabase pass: PANbGhjFW2bj91qi
 export default App;
