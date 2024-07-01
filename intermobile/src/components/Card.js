@@ -1,21 +1,21 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import '../App.css'
-import pfp from '../vendor/hehungers.png'
+import '../App.css';
 
-function UserCard() {
+const UserCard = ({ user }) => {
   return (
-    <Card style={{ backgroundColor: '#3A95B5' }}>
+    <Card style={{ backgroundColor: '#3A95B5', marginBottom: '5%' }}>
       <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
-        <Card.Img class="Cardpfp" src={pfp} />
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
+        <Card.Title>{user.Username}</Card.Title>
+        <Card.Img class="Cardpfp" src={user.Foto} />
+        <Card.Text className='paddedBott'>
+          {user.Nombre}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">Contactar</Button>
       </Card.Body>
     </Card>
   );
-}
+};
 
 export default UserCard;

@@ -104,14 +104,19 @@
 }*/
 
 .search{
-  padding-top: 5%;
-  padding-bottom: 5%;
-  padding-left: 9%;
-  padding-right: 5%;
+  padding: 5%;
 }
 
 .rec{
   font-size: 24px;
   padding-left: 4%;
   font-weight: normal;
+}
+
+.paddedBott{
+  padding-bottom: 30px;
+}
+
+.fill{
+  padding: 60px;
 }
