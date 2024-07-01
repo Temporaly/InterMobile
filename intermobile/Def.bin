@@ -1,0 +1,9 @@
+npm install @supabase/supabase-js
+npm install react-bootstrap bootstrap
+npm install dotenv
+--Git
+git remote add origin https://github.com/Temporaly/InterMobile
+git branch -M main
+git add.
+git commit -m "String"
+git push -u origin main 
