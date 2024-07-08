@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Stack from 'react-bootstrap/Stack';
 import logo from '../vendor/logo.svg'
-import pfp from '../vendor/hehungers.png'
 import { supabase } from '../utils/supabase';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
