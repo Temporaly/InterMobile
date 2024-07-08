@@ -6,11 +6,7 @@ import './bootstrap.css';
 import './App.css'
 // import SearchBar from './components/SearchBar.js';
 import BottomNavbar from './components/BottomNavbar.js';
-import JoseCard from './nosupabase/Jose.js';
-import CasimCard from './nosupabase/Casimiro.js';
-import JesusCard from './nosupabase/Jesus.js';
-import JuanCard from './nosupabase/Juan.js';
-import JuanMarCard from './nosupabase/JuanMaria.js';
+import HomeRec from './components/HomeRecomendado.js';
 import SearchBar from './components/SearcherSupa.js';
 
 function App() {
@@ -25,16 +21,8 @@ function App() {
       </div>
 
       <div id='HomeRec'>
-        <h2 className='rec'>Alumnos Recomendados</h2>
-        <div class="UsCard">
-          <JoseCard/>
-          <CasimCard/>
-          <JesusCard/>
-          <JuanCard/>
-          <JuanMarCard/>
-        {/* <UserCard/> */}
-        </div>
-        <div id='Filler' className='fill'></div>
+        <HomeRec/>
+      <div id='Filler' className='fill'></div>
       </div>
       <BottomNavbar />
     </div>

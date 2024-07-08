@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
         <Card.Title>{user.Username}</Card.Title>
         <Card.Img class="Cardpfp" src={user.Foto} />
         <Card.Text className='paddedBott'>
-          {user.Nombre}
+          {user.ClaseText}
         </Card.Text>
         <Button variant="primary">Contactar</Button>
       </Card.Body>

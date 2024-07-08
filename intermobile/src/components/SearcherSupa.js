@@ -12,7 +12,8 @@ const SearchBar = () => {
     const { data, error } = await supabase
       .from('Usuario')  // Reemplaza con el nombre de tu tabla
       .select('*')
-      .ilike('Username', `%${query}%`);  // Reemplaza con el nombre de la columna que deseas buscar
+      .ilike('Username', `%${query}%`)  // Reemplaza con el nombre de la columna que deseas buscar
+      .neq('IDUsuario', 2);  // Excluye resultados donde IDUsuario sea 2
 
     if (error) {
       console.error('Error fetching data:', error);
