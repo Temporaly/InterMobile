@@ -1,5 +1,5 @@
-import HomeRec from './components/HomeRecomendado.js';
-import SearchBar from './components/SearcherSupa.js';
+import HomeRec from '../components/HomeRecomendado.js';
+import SearchBar from '../components/SearcherSupa.js';
 
 function Busqueda()
 {
