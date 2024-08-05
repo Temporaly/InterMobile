@@ -120,3 +120,68 @@
 .fill{
   padding: 60px;
 }
+
+.ProfilePfp
+{
+  display: block;
+  border-radius: 50%;
+  max-width: 150%; 
+  max-height: auto;
+  margin: auto;
+  margin-top: 4%;
+}
+
+.ProfileTop
+{
+  text-align: center;
+  align-items: center;
+}
+
+/* Resize images */
+.ProfileTop img {
+  width: 45%;
+  height: auto;
+}
+
+.Profile_DataContainer
+{
+  font-size: larger;
+  padding-top: 3%;
+  padding-left: 2%;
+}
+
+.Profile_PaddedTop
+{
+  padding-top: 1%;
+}
+
+.Profile_UsernameText
+{
+  padding-top: 2%;
+  font-size: xx-large;
+}
+
+.Profile_Chevron
+{
+  font-size: 50px; /*Tamaño del ícono*/
+  color: #000; /*Color del ícono*/
+  position: absolute;
+  top: 15%;
+  left: -8px;
+  z-index: 10;
+}
+
+.EditInfo
+{
+  font-size: x-large;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.Silly
+{
+  height: auto;
+  border-radius: .75%;
+}

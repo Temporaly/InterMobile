@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Header from './components/Header.js'
 import './bootstrap.css';
@@ -9,6 +10,7 @@ import Tienda from './pages/Tienda.js';
 import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
+import EditarPerfil from './pages/EditarPerfil.js'
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/Profile" element={<Perfil />} />
           <Route path="/Options" element={<Opciones />} />
           <Route path="/Logout" element={<CerrarSesion />} />
+          <Route path="/EditarPerfil" element={<EditarPerfil />} />
         </Routes>
         <div id='Filler' className='fill'></div>
         <BottomNavbar />

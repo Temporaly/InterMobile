@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, FormControl, InputGroup } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
-import UserCard from './Card.js' // Importa el componente UserCard
+import UserCard from './Card.js'; // Importa el componente UserCard
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -9,6 +9,7 @@ const SearchBar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    console.log('Fetching results for:', query); // Para rastrear cuándo se llama
     const { data, error } = await supabase
       .from('Usuario')  // Reemplaza con el nombre de tu tabla
       .select('*')
@@ -38,12 +39,14 @@ const SearchBar = () => {
           </InputGroup> */}
         </InputGroup>
       </Form>
-      <div>
-        <h2 className='HomeRec'>Resultados de Búsqueda:</h2>
-        {results.map((result) => (
-          <UserCard key={result.id} user={result} /> // Utiliza UserCard para mostrar los resultados
-        ))}
-      </div>
+      {results.length > 0 && (
+        <div>
+          <h2 className='HomeRec'>Resultados de la búsqueda:</h2>
+          {results.map((result) => (
+            <UserCard key={result.id} user={result} /> // Utiliza UserCard para mostrar los resultados
+          ))}
+        </div>
+      )}
     </div>
   );
 };
