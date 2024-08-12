@@ -17,7 +17,7 @@ function Money() {
                 .single();
 
             if (error) {
-                console.error('Error fetching user data:', error);
+                //console.error('Error fetching user data:', error);
             } else {
                 setUser(data);
             }
@@ -31,7 +31,7 @@ function Money() {
                 .single();
 
             if (error) {
-                console.error('Error fetching user data:', error);
+                //console.error('Error fetching user data:', error);
             } else {
                 setUserW(data);
             }
@@ -44,7 +44,7 @@ function Money() {
                 .eq('IDBilletera', user.IDBilletera)
 
             if (error) {
-                console.error('Error fetching user data:', error);
+                //console.error('Error fetching user data:', error);
             } else {
                 setUserP(data);
             }

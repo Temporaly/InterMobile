@@ -192,3 +192,169 @@
   padding-top: 4%;
   font-size: xx-large;
 }
+
+/*Func12 Start*/
+.homepage-landing {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  padding: 19px 8px;
+  box-sizing: border-box;
+}
+
+.homepage-landing .bienvenido-hungry-dued {
+  margin: 0 0 40px 0;
+  display: inline-block;
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 0.625;
+  color: #000000;
+}
+
+.homepage-landing .buscar-profesores,
+.homepage-landing .ver-clases-prximas {
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  color: #000000;
+}
+
+.homepage-landing .saldo-actual {
+  margin: 0 0 16.5px 0;
+  display: inline-block;
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 0.625;
+  color: #000000;
+}
+
+.homepage-landing .chats-recientes {
+  margin: 0 0 35px 0;
+  display: inline-block;
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 0.625;
+  color: #000000;
+}
+
+.homepage-landing .compras-recientes {
+  margin: 0 0 28px 0;
+  display: inline-block;
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 0.625;
+  color: #000000;
+}
+
+.homepage-landing .intercoins {
+  margin: 0 0 16.5px 60px;
+  align-self: center;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 0.625;
+  color: #000000;
+}
+
+.intercoins {
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  line-height: 1.333;
+  color: #095DB7;
+}
+
+.homepage-landing .insertar-cards {
+  margin: 0 0 47Cpx 11px;
+  display: inline-block;
+  align-self: center;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  line-height: 0.833;
+  color: #000000;
+}
+
+.homepage-landing .clase-64-intercoins {
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  line-height: 0.833;
+  color: #000000;
+}
+
+.homepage-landing .clase-64-intercoins-1 {
+  margin: 0 0 17px 0;
+  display: inline-block;
+  align-self: flex-start;
+  word-break: break-word;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 24px;
+  letter-spacing: 0.3px;
+  line-height: 0.833;
+  color: #000000;
+}
+
+.homepage-landing .group-1 {
+  border-radius: 17px;
+  background-color: #3A95B5;
+  position: relative;
+  margin: 0 0 28px 11px;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 0 21px 12px;
+  width: calc(100% - 11px);
+  box-sizing: border-box;
+}
+
+.homepage-landing .container {
+  border-radius: 20px;
+  background-color: #095DB7;
+  position: relative;
+  margin: 0 10px 0 21px;
+  padding: 18px 2px 17px 0;
+  width: calc(100% - 31px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.homepage-landing .container-1 {
+  border-radius: 20px;
+  background-color: #FBBC05;
+  position: relative;
+  margin: 0 9px 10px 22px;
+  padding: 18px 2px 17px 0;
+  width: calc(100% - 31px);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/*Func12 End*/
