@@ -128,7 +128,7 @@
   max-width: 150%; 
   max-height: auto;
   margin: auto;
-  margin-top: 4%;
+  margin-top: 3.8%;
 }
 
 .ProfileTop
@@ -203,13 +203,12 @@
 }
 
 .homepage-landing .bienvenido-hungry-dued {
-  margin: 0 0 40px 0;
+  margin: 1.7% 0 5.5% 0;
   display: inline-block;
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
-  font-size: 32px;
+  font-size: xx-large;
   letter-spacing: 0.3px;
   line-height: 0.625;
   color: #000000;
@@ -218,7 +217,6 @@
 .homepage-landing .buscar-profesores,
 .homepage-landing .ver-clases-prximas {
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 16px;
   letter-spacing: 0.3px;
@@ -227,15 +225,14 @@
 }
 
 .homepage-landing .saldo-actual {
-  margin: 0 0 16.5px 0;
+  margin: 0 0 6% 0;
   display: inline-block;
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
-  font-size: 32px;
+  font-size: xx-large;
   letter-spacing: 0.3px;
-  line-height: 0.625;
+  line-height:  0.625;
   color: #000000;
 }
 
@@ -244,7 +241,6 @@
   display: inline-block;
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 32px;
   letter-spacing: 0.3px;
@@ -257,7 +253,6 @@
   display: inline-block;
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 32px;
   letter-spacing: 0.3px;
@@ -266,24 +261,19 @@
 }
 
 .homepage-landing .intercoins {
-  margin: 0 0 16.5px 60px;
-  align-self: center;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
-  font-size: 32px;
+  font-size: x-large;
   letter-spacing: 0.3px;
   line-height: 0.625;
   color: #000000;
 }
 
 .intercoins {
-  font-family: 'Roboto';
   font-weight: normal;
-  font-size: 32px;
-  letter-spacing: 0.3px;
-  line-height: 1.333;
-  color: #095DB7;
+  text-align: center;
+  font-size: x-large;
+  margin-bottom: 6%;
 }
 
 .homepage-landing .insertar-cards {
@@ -291,7 +281,6 @@
   display: inline-block;
   align-self: center;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 24px;
   letter-spacing: 0.3px;
@@ -302,7 +291,6 @@
 .homepage-landing .clase-64-intercoins {
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 24px;
   letter-spacing: 0.3px;
@@ -315,7 +303,6 @@
   display: inline-block;
   align-self: flex-start;
   word-break: break-word;
-  font-family: 'Roboto';
   font-weight: normal;
   font-size: 24px;
   letter-spacing: 0.3px;
@@ -358,3 +345,15 @@
 }
 
 /*Func12 End*/
+
+.class_Mapped{
+  font-size: larger;
+}
+
+.Home_ButtonAllign{
+  text-align: center;
+}
+
+.ColorInc{
+  color: #095DB7;
+}

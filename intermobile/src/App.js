@@ -10,8 +10,11 @@ import Tienda from './pages/Tienda.js';
 import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
-import EditarPerfil from './pages/EditarPerfil.js'
+import Classes from './pages/Classes.js'
 
+//Sprint 1: Buscar ✅
+//Sprint 2: Home y Perfil ✅
+//Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ⚠️ 16 - Sep.
 function App() {
   return (
     <Router>
@@ -27,7 +30,7 @@ function App() {
           <Route path="/Profile" element={<Perfil />} />
           <Route path="/Options" element={<Opciones />} />
           <Route path="/Logout" element={<CerrarSesion />} />
-          <Route path="/EditarPerfil" element={<EditarPerfil />} />
+          <Route path="/Classes" element={<Classes />} />
         </Routes>
         <div id='Filler' className='fill'></div>
         <BottomNavbar />
