@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
