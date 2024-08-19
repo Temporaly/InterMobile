@@ -357,3 +357,42 @@
 .ColorInc{
   color: #095DB7;
 }
+
+.calendar {
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day-header {
+  font-weight: bold;
+}
+
+.calendar-day {
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+  height: 100px;
+}
+
+.event {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background-color: #007bff;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 0.75em;
+}

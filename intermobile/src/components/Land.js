@@ -56,7 +56,7 @@ function HomepageLanding() {
     }
 
     fetchData();
-
+    console.log("Mount " + isMounted)
     return () => {
       isMounted = false; // Clean up the flag when the component unmounts
     };
