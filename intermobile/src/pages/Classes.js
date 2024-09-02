@@ -8,6 +8,8 @@ const CalendarPage = () => {
   const [clases, setClases] = useState([]);
   const [materias, setMaterias] = useState([]);
   const [events, setEvents] = useState([]); // Array para almacenar eventos
+  const [clasesPasadas, setClasesPasadas] = useState([]);
+  const [clasesFuturas, setClasesFuturas] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,14 +32,29 @@ const CalendarPage = () => {
         if (clasesError) {
           console.error(clasesError);
         } else {
-          setClases(clasesData);
+          // Separar las clases en futuras y pasadas
+          const ahora = new Date();
+          const futuras = [];
+          const pasadas = [];
+
+          clasesData.forEach((clase) => {
+            const fechaClase = new Date(clase.Fecha);
+            if (fechaClase >= ahora) {
+              futuras.push(clase);
+            } else {
+              pasadas.push(clase);
+            }
+          });
 
           // Crear un array de eventos basado en las fechas de las clases
-          const eventos = clasesData.map((clase) => ({
+          const eventos = futuras.map((clase) => ({
             title: getMateriaNombre(clase.IDMateria, materiasData),
             date: new Date(clase.Fecha),
           }));
           setEvents(eventos); // Actualizar el estado de los eventos
+
+          setClasesFuturas(futuras);
+          setClasesPasadas(pasadas);
         }
       }
     };
@@ -64,18 +81,41 @@ const CalendarPage = () => {
       </Row>
       <Row className="justify-content-center">
         <h1 className="text-center" style={{ paddingBottom: "5%" }}>Clases Agendadas</h1>
-        {clases.map((clase) => (
-          <Col key={clase.ID} md={4} className="mb-4">
-            <Card>
-              <Card.Body>
-                <Card.Title>{getMateriaNombre(clase.IDMateria, materias)}</Card.Title>
-                <Card.Text>
-                  Fecha: {new Date(clase.Fecha).toLocaleDateString()}
-                </Card.Text>
-              </Card.Body>
-            </Card>
+        {clasesFuturas.length > 0 ? (
+          clasesFuturas.map((clase) => (
+            <Col key={clase.ID} md={4} className="mb-4">
+              <Card>
+                <Card.Body>
+                  <Card.Title>{getMateriaNombre(clase.IDMateria, materias)}</Card.Title>
+                  <Card.Text>
+                    Fecha: {new Date(clase.Fecha).toLocaleDateString()}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+        ) : (
+          <Col md={12} className="text-center">
+            <p>No tienes ninguna clase próxima</p>
           </Col>
-        ))}
+        )}
+        {clasesPasadas.length > 0 && (
+          <>
+            <h2 className="text-center" style={{ paddingBottom: "5%", color: "red" }}>Clases Pasadas</h2>
+            {clasesPasadas.map((clase) => (
+              <Col key={clase.ID} md={4} className="mb-4">
+                <Card style={{ backgroundColor: "#f8d7da" }}> {/* Color rojo claro para las tarjetas */}
+                  <Card.Body>
+                    <Card.Title>{getMateriaNombre(clase.IDMateria, materias)}</Card.Title>
+                    <Card.Text>
+                      Fecha: {new Date(clase.Fecha).toLocaleDateString()}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </>
+        )}
       </Row>
     </Container>
   );
