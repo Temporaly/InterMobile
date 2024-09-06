@@ -12,9 +12,17 @@ import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
 
+//--- TPFinal
 //Sprint 1: Buscar ✅
 //Sprint 2: Home y Perfil ✅
 //Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ⚠️ 16 - Sep.
+
+//--- DAI
+//Func 1: Configuración de Nro. Emergencia - Expo ⚠️
+//Func 2: Mensajes al usuario - TPFinal ❎
+//Func 3: Llamado de Emergencia - Expo ⚠️
+//Func 7: Identificación de cada Aplicación- TPFinal ❎
+
 function App() {
   return (
     <Router>
