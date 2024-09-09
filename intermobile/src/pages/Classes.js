@@ -5,7 +5,7 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import CustomCalendar from '../components/Calendar';
 
 const CalendarPage = () => {
-  const [clases, setClases] = useState([]);
+  //const [clases, setClases] = useState([]);
   const [materias, setMaterias] = useState([]);
   const [events, setEvents] = useState([]); // Array para almacenar eventos
   const [clasesPasadas, setClasesPasadas] = useState([]);
