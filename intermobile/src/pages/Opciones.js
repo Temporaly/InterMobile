@@ -16,8 +16,10 @@ export default Opciones*/
 
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Opciones = () => {
+const navigate = useNavigate();
   const [formState, setFormState] = useState({
     theme: '',
     currency: '',
@@ -36,14 +38,16 @@ const Opciones = () => {
     e.preventDefault();
     // Aquí podrías manejar la lógica para guardar la configuración
     console.log('Configuración guardada:', formState);
+    navigate(-1);
   };
 
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md={8}>
-          <h2>Opciones</h2>
+          <h2 style={{ paddingTop: "4%"}}>Opciones</h2>
           <Form onSubmit={handleSubmit}>
+          <h5>Visuales</h5>
             <Form.Group controlId="formTheme" className='paddedBott'>
               <Form.Label>Tema</Form.Label>
               <Form.Control
@@ -58,6 +62,8 @@ const Opciones = () => {
                 <option value="blue">Azul</option>
               </Form.Control>
             </Form.Group>
+
+            <h5>Monetarias</h5>
 
             <Form.Group controlId="formCurrency" className='paddedBott'>
               <Form.Label>Mostrar Precio en</Form.Label>
@@ -74,6 +80,8 @@ const Opciones = () => {
               </Form.Control>
             </Form.Group>
 
+            <h5>Misceláneas</h5>
+
             <Form.Group controlId="formEmailNotifications" className='paddedBott'>
               <Form.Check
                 type="checkbox"
@@ -84,7 +92,7 @@ const Opciones = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" style={{color: "#FFFFFF", marginTop: "15%"}}>
               Guardar Cambios
             </Button>
           </Form>

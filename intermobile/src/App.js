@@ -11,11 +11,14 @@ import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
+import ThemeTest from './pages/ThemeTest.js';
+import { ThemeProvider } from './ThemeContext.js';
 
 //--- TPFinal
 //Sprint 1: Buscar ✅
 //Sprint 2: Home y Perfil ✅
 //Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ⚠️ 16 - Sep.
+//Modificar la presentación antes del 16 😥
 
 //--- DAI
 //Func 1: Configuración de Nro. Emergencia - Expo ⚠️
@@ -23,9 +26,11 @@ import Classes from './pages/Classes.js'
 //Func 3: Llamado de Emergencia - Expo ⚠️
 //Func 7: Identificación de cada Aplicación- TPFinal ❎
 
+
 function App() {
   return (
     <Router>
+      <ThemeProvider>
       <div className="App">
         <header className="bg">
           <Header/>
@@ -39,10 +44,12 @@ function App() {
           <Route path="/Options" element={<Opciones />} />
           <Route path="/Logout" element={<CerrarSesion />} />
           <Route path="/Classes" element={<Classes />} />
+          <Route path="/ThemeTest" element={<ThemeTest />} />
         </Routes>
         <div id='Filler' className='fill'></div>
         <BottomNavbar />
       </div>
+      </ThemeProvider>
     </Router>
   );
 }
