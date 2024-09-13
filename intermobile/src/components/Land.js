@@ -2,11 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { supabase } from "../utils/supabase";
+import ErrorHandler from './ErrorHandler';
 
 function HomepageLanding() {
   const [user, setUser] = useState(null);
   const [userWall, setUserW] = useState(null);
   const [userPur, setUserP] = useState([]);
+
+  const [error, setError] = useState('');
+
+  const handleError = (message) => {
+    setError(message);
+  };
+
+  const handleCloseError = () => {
+    setError('');
+  };
 
   useEffect(() => {
     let isMounted = true; // Flag to track component mount status
@@ -52,6 +63,7 @@ function HomepageLanding() {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        handleError("Error al traer los datos del Usuario");
       }
     }
 
@@ -63,7 +75,8 @@ function HomepageLanding() {
   }, []);
 
   if (!user || !userWall) {
-    return <div>Loading...</div>; // You can customize the loading state
+    return <div>Loading... 
+      <ErrorHandler message={error} onClose={handleCloseError} /></div>; // You can customize the loading state
   }
 
   return (
