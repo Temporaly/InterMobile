@@ -5,8 +5,20 @@ import { supabase } from '../utils/supabase';
 import GoBackButton from '../components/GoBack';
 import { FaSave, FaTimes } from 'react-icons/fa'; // Importa los íconos necesarios
 import { GoPencil } from "react-icons/go";
+import ErrorHandler from '../components/ErrorHandler';
 
 function Perfil() {
+
+  const [error, setError] = useState('');
+
+  const handleError = (message) => {
+    setError(message);
+  };
+
+  const handleCloseError = () => {
+    setError('');
+  };
+
   const [user, setUser] = useState({
     Username: '',
     Nombre: '',
@@ -28,6 +40,7 @@ function Perfil() {
 
       if (error) {
         console.error('Error fetching user data:', error);
+        handleError("Error al traer los datos del Usuario\n " + error.message);
       } else {
         setUser(data);
         setFormData(data);
@@ -57,6 +70,7 @@ function Perfil() {
 
     if (error) {
       console.error('Error updating user data:', error);
+      handleError("Error al actualizar al Usuario\n " + error.message);
     } else {
       setUser(formData);
       setIsEditing(false);
@@ -128,6 +142,7 @@ function Perfil() {
             <Button variant="secondary" onClick={handleCancel} className="profile-cancel-button">
               <FaTimes /> Cancelar
             </Button>
+            <ErrorHandler message={error} onClose={handleCloseError} />
           </Form>
         ) : (
           <div>
@@ -141,6 +156,7 @@ function Perfil() {
           </div>
         )}
       </div>
+      <ErrorHandler message={error} onClose={handleCloseError} />
     </div>
   );
 }

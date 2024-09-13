@@ -3,6 +3,7 @@ import { Card, Container, Row, Col } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import { FaCalendarAlt } from 'react-icons/fa';
 import CustomCalendar from '../components/Calendar';
+import ErrorHandler from '../components/ErrorHandler';
 
 const CalendarPage = () => {
   //const [clases, setClases] = useState([]);
@@ -10,6 +11,16 @@ const CalendarPage = () => {
   const [events, setEvents] = useState([]); // Array para almacenar eventos
   const [clasesPasadas, setClasesPasadas] = useState([]);
   const [clasesFuturas, setClasesFuturas] = useState([]);
+
+  const [error, setError] = useState('');
+
+  const handleError = (message) => {
+    setError(message);
+  };
+
+  const handleCloseError = () => {
+    setError('');
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +31,7 @@ const CalendarPage = () => {
 
       if (materiasError) {
         console.error(materiasError);
+        handleError("Error al traer las Materias\n " + materiasError.message);
       } else {
         setMaterias(materiasData);
 
@@ -31,6 +43,7 @@ const CalendarPage = () => {
 
         if (clasesError) {
           console.error(clasesError);
+          handleError("Error al traer las Clases del Usuario\n " + clasesError.message);
         } else {
           // Separar las clases en futuras y pasadas
           const ahora = new Date();
@@ -117,6 +130,7 @@ const CalendarPage = () => {
           </>
         )}
       </Row>
+      <ErrorHandler message={error} onClose={handleCloseError} />
     </Container>
   );
 };

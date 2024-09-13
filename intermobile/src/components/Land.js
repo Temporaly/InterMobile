@@ -63,7 +63,7 @@ function HomepageLanding() {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        handleError("Error al traer los datos del Usuario");
+        handleError("Error al traer los datos del Usuario\n " + error.message);
       }
     }
 

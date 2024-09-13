@@ -7,7 +7,7 @@ const ErrorHandler = ({ message, onClose }) => {
 
   useEffect(() => {
     // Vibrar el dispositivo si la API está disponible
-    if (navigator.vibrate) {
+    if (navigator.vibrate && visible === true) {
       navigator.vibrate(200); // Intervention by Chrome because User hasn't tapped on any frame :|
       console.log("*Vibrates*")
     }

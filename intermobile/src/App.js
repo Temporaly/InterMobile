@@ -18,11 +18,10 @@ import { ThemeProvider } from './ThemeContext.js';
 //Sprint 1: Buscar ✅
 //Sprint 2: Home y Perfil ✅
 //Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ⚠️ 16 - Sep.
-//Modificar la presentación antes del 16 😥
 
 //--- DAI
 //Func 1: Configuración de Nro. Emergencia - Expo ⚠️
-//Func 2: Mensajes al usuario - TPFinal ❎
+//Func 2: Mensajes al usuario - TPFinal ✅ - Arreglar bug de vibrar cuando no debe o no vibrar
 //Func 3: Llamado de Emergencia - Expo ⚠️
 //Func 7: Identificación de cada Aplicación- TPFinal ❎
 

@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from './Card'; // Asegúrate de que la ruta sea correcta
 import { supabase } from '../utils/supabase';
+import ErrorHandler from './ErrorHandler';
 
 const HomeRec = () => {
   const [user, setUser] = useState(null);
   const [listMaterias, setMaterias] = useState(null);
   const [materiasXPerson, setMateriasXPerson] = useState(null);
+
+  const [error, setError] = useState('');
+
+  const handleError = (message) => {
+    setError(message);
+  };
+
+  const handleCloseError = () => {
+    setError('');
+  };
 
   useEffect(() => {
     // Función para obtener un usuario aleatorio
@@ -18,6 +29,7 @@ const HomeRec = () => {
 
       if (error) {
         console.error('Error fetching user:', error);
+        handleError("Error al traer los datos del Usuario\n " + error.message);
       } else if (data && data.length > 0) {
         const randomIndex = Math.floor(Math.random() * data.length);
         setUser(data[randomIndex]);
@@ -31,6 +43,7 @@ const HomeRec = () => {
 
       if (error) {
         console.error('Error fetching materias:', error);
+        handleError("Error al traer las Materias\n " + error.message);
       } else if (data && data.length > 0) {
         setMaterias(data);
       }
@@ -43,6 +56,7 @@ const HomeRec = () => {
 
       if (error) {
         console.error('Error fetching materias de personas:', error);
+        handleError("Error al traer las Materias\n " + error.message);
       } else if (data && data.length > 0) {
         setMateriasXPerson(data);
       }
@@ -68,6 +82,7 @@ const HomeRec = () => {
           <p>Loading...</p>
         )}
       </div>
+      <ErrorHandler message={error} onClose={handleCloseError} />
     </div>
   );
 };
