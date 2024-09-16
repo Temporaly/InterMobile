@@ -14,12 +14,16 @@ export default Opciones*/
 // src/components/Settings.js
 // src/components/Opciones.js
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext, CurrencyContext } from '../App'; // Import CurrencyContext
 
 const Opciones = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { changeTheme } = useContext(ThemeContext); // Access the theme change function
+  const { setCurrency } = useContext(CurrencyContext); // Access the currency setter
+
   const [formState, setFormState] = useState({
     theme: '',
     currency: '',
@@ -36,18 +40,26 @@ const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí podrías manejar la lógica para guardar la configuración
     console.log('Configuración guardada:', formState);
-    navigate(-1);
+
+    if (formState.theme) {
+      changeTheme(formState.theme);
+    }
+
+    if (formState.currency) {
+      setCurrency(formState.currency); // Change currency globally
+    }
+
+    navigate(-1); // Go back after submitting
   };
 
   return (
     <Container>
       <Row className="justify-content-center">
         <Col md={8}>
-          <h2 style={{ paddingTop: "4%"}}>Opciones</h2>
+          <h2 style={{ paddingTop: "4%" }}>Opciones</h2>
           <Form onSubmit={handleSubmit}>
-          <h5>Visuales</h5>
+            <h5>Visuales</h5>
             <Form.Group controlId="formTheme" className='paddedBott'>
               <Form.Label>Tema</Form.Label>
               <Form.Control
@@ -57,14 +69,12 @@ const navigate = useNavigate();
                 onChange={handleChange}
               >
                 <option value="">Selecciona un tema</option>
-                <option value="light">Claro</option>
+                <option value="light">Por Defecto</option>
                 <option value="dark">Oscuro</option>
-                <option value="blue">Azul</option>
               </Form.Control>
             </Form.Group>
 
             <h5>Monetarias</h5>
-
             <Form.Group controlId="formCurrency" className='paddedBott'>
               <Form.Label>Mostrar Precio en</Form.Label>
               <Form.Control
@@ -74,25 +84,13 @@ const navigate = useNavigate();
                 onChange={handleChange}
               >
                 <option value="">Selecciona una moneda</option>
-                <option value="intercoins">Intercoins</option>
-                <option value="ars">ARS</option>
-                <option value="usd">USD</option>
+                <option value="Intercoins">Intercoins</option>
+                <option value="ARS">ARS</option>
+                <option value="USD">USD</option>
               </Form.Control>
             </Form.Group>
 
-            <h5>Misceláneas</h5>
-
-            <Form.Group controlId="formEmailNotifications" className='paddedBott'>
-              <Form.Check
-                type="checkbox"
-                name="emailNotifications"
-                label="Recibir notificaciones por correo electrónico"
-                checked={formState.emailNotifications}
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit" style={{color: "#FFFFFF", marginTop: "15%"}}>
+            <Button variant="primary" type="submit" style={{ color: "#FFFFFF", marginTop: "15%" }}>
               Guardar Cambios
             </Button>
           </Form>
@@ -103,3 +101,4 @@ const navigate = useNavigate();
 };
 
 export default Opciones;
+

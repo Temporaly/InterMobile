@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { supabase } from "../utils/supabase";
 import ErrorHandler from './ErrorHandler';
+import { CurrencyContext } from '../App'; // Import CurrencyContext
 
 function HomepageLanding() {
   const [user, setUser] = useState(null);
   const [userWall, setUserW] = useState(null);
   const [userPur, setUserP] = useState([]);
-
   const [error, setError] = useState('');
+  const { currency } = useContext(CurrencyContext); // Get the selected currency
 
   const handleError = (message) => {
     setError(message);
@@ -20,7 +21,7 @@ function HomepageLanding() {
   };
 
   useEffect(() => {
-    let isMounted = true; // Flag to track component mount status
+    let isMounted = true;
 
     async function fetchData() {
       try {
@@ -68,16 +69,16 @@ function HomepageLanding() {
     }
 
     fetchData();
-    console.log("Mount " + isMounted)
     return () => {
-      isMounted = false; // Clean up the flag when the component unmounts
+      isMounted = false;
     };
   }, []);
 
   if (!user || !userWall) {
     return <div>Loading... 
-      <ErrorHandler message={error} onClose={handleCloseError} /></div>; // You can customize the loading state
+      <ErrorHandler message={error} onClose={handleCloseError} /></div>;
   }
+
 
   return (
     <div className="homepage-landing">
@@ -90,14 +91,14 @@ function HomepageLanding() {
         </div>
         <p className="intercoins">
           <span className="intercoins-sub-0">{userWall.Saldo}</span>
-          <span className='ColorInc'> Intercoins</span>
+          <span className='ColorInc'> {currency}</span>
         </p>
         <div className="compras-recientes">
           Compras Recientes:
         </div>
         {userPur.map((purchase) => (
           <p key={purchase.IDCompra} className='class_Mapped'>
-            Clase - {purchase.Total} Intercoins
+            Clase - {purchase.Total} {currency}
           </p>
         ))}
       </div>

@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React, {useEffect, useState, createContext} from 'react';
+//import './App.css';
 import Header from './components/Header.js'
 import './bootstrap.css';
 import BottomNavbar from './components/BottomNavbar.js';
@@ -11,8 +11,10 @@ import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
-import ThemeTest from './pages/ThemeTest.js';
-import { ThemeProvider } from './ThemeContext.js';
+
+export const ThemeContext = createContext();
+
+export const CurrencyContext = createContext();
 
 //--- TPFinal
 //Sprint 1: Buscar ✅
@@ -27,9 +29,31 @@ import { ThemeProvider } from './ThemeContext.js';
 
 
 function App() {
+
+  const [theme, setTheme] = useState("light"); // Default theme is "light"
+  const [currency, setCurrency] = useState('Intercoins'); // Default to Intercoins
+
+  // Dynamically load CSS based on the selected theme
+  const changeTheme = async (newTheme) => {
+    if (newTheme === "dark") {
+      await import("./CSS Themes/altdefault.css");
+      await import("./CSS Themes/AppAltDefault.css");
+    } else {
+      await import("./CSS Themes/default.css");
+      await import("./CSS Themes/AppDefault.css");
+    }
+    setTheme(newTheme);
+  };
+
+  useEffect(() => {
+    changeTheme(theme);
+  }, [theme]);
+
+
   return (
     <Router>
-      <ThemeProvider>
+      <ThemeContext.Provider value={{ theme, changeTheme }}>
+      <CurrencyContext.Provider value={{ currency, setCurrency }}>
       <div className="App">
         <header className="bg">
           <Header/>
@@ -43,12 +67,12 @@ function App() {
           <Route path="/Options" element={<Opciones />} />
           <Route path="/Logout" element={<CerrarSesion />} />
           <Route path="/Classes" element={<Classes />} />
-          <Route path="/ThemeTest" element={<ThemeTest />} />
         </Routes>
         <div id='Filler' className='fill'></div>
         <BottomNavbar />
       </div>
-      </ThemeProvider>
+      </CurrencyContext.Provider>
+      </ThemeContext.Provider>
     </Router>
   );
 }
