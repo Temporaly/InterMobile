@@ -1,7 +1,7 @@
 import React, {useEffect, useState, createContext} from 'react';
 //import './App.css';
 import Header from './components/Header.js'
-import './bootstrap.css';
+//import './bootstrap.css';
 import BottomNavbar from './components/BottomNavbar.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -19,7 +19,8 @@ export const CurrencyContext = createContext();
 //--- TPFinal
 //Sprint 1: Buscar ✅
 //Sprint 2: Home y Perfil ✅
-//Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ⚠️ 16 - Sep.
+//Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ✅
+//Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) - 14 oct.
 
 //--- DAI
 //Func 1: Configuración de Nro. Emergencia - Expo ⚠️
@@ -49,6 +50,7 @@ function App() {
     changeTheme(theme);
   }, [theme]);
 
+  
 
   return (
     <Router>

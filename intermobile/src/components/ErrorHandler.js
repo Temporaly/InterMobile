@@ -11,6 +11,7 @@ const ErrorHandler = ({ message, onClose }) => {
       navigator.vibrate(200); // Intervention by Chrome because User hasn't tapped on any frame :|
       console.log("*Vibrates*")
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Manejar el cierre del mensaje de error
