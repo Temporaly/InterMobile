@@ -1,7 +1,7 @@
-import React, {useEffect, useState, createContext} from 'react';
-//import './App.css';
+import React, { useState, createContext } from 'react';
+import './App.css';
 import Header from './components/Header.js'
-//import './bootstrap.css';
+import './bootstrap.css';
 import BottomNavbar from './components/BottomNavbar.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
@@ -11,8 +11,6 @@ import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
-
-export const ThemeContext = createContext();
 
 export const CurrencyContext = createContext();
 
@@ -31,30 +29,12 @@ export const CurrencyContext = createContext();
 
 function App() {
 
-  const [theme, setTheme] = useState("light"); // Default theme is "light"
   const [currency, setCurrency] = useState('Intercoins'); // Default to Intercoins
-
-  // Dynamically load CSS based on the selected theme
-  const changeTheme = async (newTheme) => {
-    if (newTheme === "dark") {
-      await import("./CSS Themes/altdefault.css");
-      await import("./CSS Themes/AppAltDefault.css");
-    } else {
-      await import("./CSS Themes/default.css");
-      await import("./CSS Themes/AppDefault.css");
-    }
-    setTheme(newTheme);
-  };
-
-  useEffect(() => {
-    changeTheme(theme);
-  }, [theme]);
 
   
 
   return (
     <Router>
-      <ThemeContext.Provider value={{ theme, changeTheme }}>
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
       <div className="App">
         <header className="bg">
@@ -74,7 +54,6 @@ function App() {
         <BottomNavbar />
       </div>
       </CurrencyContext.Provider>
-      </ThemeContext.Provider>
     </Router>
   );
 }

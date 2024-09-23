@@ -1,5 +1,0 @@
-Encontrar manera de que cuando cambie el tema en las opciones cambie no solo el css, sinó que cambie también los styles
-También hacer y diseñar los styles en primer lugar
-
-
-Posibilidad 1: Variable global que decide el tema y el CSS al comienzo del App.js y que se guarda en local storage para no romper las bolas.

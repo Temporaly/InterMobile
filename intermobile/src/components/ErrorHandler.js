@@ -6,13 +6,12 @@ const ErrorHandler = ({ message, onClose }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Vibrar el dispositivo si la API está disponible
-    if (navigator.vibrate && visible === true) {
-      navigator.vibrate(200); // Intervention by Chrome because User hasn't tapped on any frame :|
-      console.log("*Vibrates*")
+    // Vibrar el dispositivo si hay un mensaje de error
+    if (navigator.vibrate && visible && message) {
+      navigator.vibrate(200);
+      console.log("*Vibrates*");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [visible, message]); // Añade 'message' como dependencia
 
   // Manejar el cierre del mensaje de error
   const handleClose = () => {

@@ -17,11 +17,11 @@ export default Opciones*/
 import React, { useState, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { ThemeContext, CurrencyContext } from '../App'; // Import CurrencyContext
+import { CurrencyContext } from '../App'; // Import CurrencyContext
 
 const Opciones = () => {
   const navigate = useNavigate();
-  const { changeTheme } = useContext(ThemeContext); // Access the theme change function
+  const { changeTheme } = " "; // Access the theme change function
   const { setCurrency } = useContext(CurrencyContext); // Access the currency setter
 
   const [formState, setFormState] = useState({
