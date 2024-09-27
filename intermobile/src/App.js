@@ -11,6 +11,7 @@ import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
+import QRCodeScanner from './pages/QRCodeScanner.js';
 
 export const CurrencyContext = createContext();
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/Options" element={<Opciones />} />
           <Route path="/Logout" element={<CerrarSesion />} />
           <Route path="/Classes" element={<Classes />} />
+          <Route path="/scan-qr" element={<QRCodeScanner />} />
         </Routes>
         <div id='Filler' className='fill'></div>
         <BottomNavbar />
@@ -59,28 +61,4 @@ function App() {
 }
 export default App;
 
-
-/* OLD APP FUNC
-function App() {
-  return (
-    <div className="App">
-      <header class="bg">
-        <Header/>
-      </header>
-      //Comienzo Busqueda
-      <div id='queryGens'>
-        <SearchBar/>
-      </div>
-
-      <div id='HomeRec'>
-        <HomeRec/>
-      <div id='Filler' className='fill'></div>
-      </div>
-      //Final Busqueda
-      <div id='Filler' className='fill'></div>
-      <BottomNavbar />
-    </div>
-  );
-}
-*/
 //Supabase pass: PANbGhjFW2bj91qi

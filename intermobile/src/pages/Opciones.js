@@ -1,20 +1,4 @@
-/*
-
-function Opciones()
-{
-    return(
-        <div>
-            <h1>Hola, Opciones funciona!</h1>
-        </div>
-    );
-}
-
-export default Opciones*/
-
-// src/components/Settings.js
-// src/components/Opciones.js
-
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { CurrencyContext } from '../App'; // Import CurrencyContext
@@ -29,6 +13,22 @@ const Opciones = () => {
     currency: '',
     emailNotifications: false,
   });
+
+  const [hasCamera, setHasCamera] = useState(false);
+
+  useEffect(() => {
+    const checkCameraAvailability = async () => {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const camera = devices.find(device => device.kind === 'videoinput');
+        setHasCamera(!!camera);
+      } catch (error) {
+        console.error('Error checking camera availability:', error);
+      }
+    };
+
+    checkCameraAvailability();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -51,6 +51,11 @@ const Opciones = () => {
     }
 
     navigate(-1); // Go back after submitting
+  };
+
+  const handleScanQR = () => {
+    // Navigate to your QR code scanning page
+    navigate('/scan-qr');
   };
 
   return (
@@ -94,6 +99,17 @@ const Opciones = () => {
               Guardar Cambios
             </Button>
           </Form>
+
+          {/* Show the About button only if the device has a camera */}
+          {hasCamera && (
+              <Button 
+                variant="secondary" 
+                onClick={handleScanQR} 
+                style={{ marginTop: "15%" }}
+              >
+                About
+              </Button>
+            )}
         </Col>
       </Row>
     </Container>
@@ -101,4 +117,3 @@ const Opciones = () => {
 };
 
 export default Opciones;
-
