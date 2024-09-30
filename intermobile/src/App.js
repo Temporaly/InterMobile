@@ -12,6 +12,9 @@ import Opciones from './pages/Opciones.js';
 import CerrarSesion from './pages/CerrarSesion.js';
 import Classes from './pages/Classes.js'
 import QRCodeScanner from './pages/QRCodeScanner.js';
+import FTT from './pages/FTL.js';
+import Login from './pages/Login.js';
+import Register from './pages/Register.js';
 
 export const CurrencyContext = createContext();
 
@@ -22,26 +25,31 @@ export const CurrencyContext = createContext();
 //Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) - 14 oct.
 
 //--- DAI
-//Func 1: Configuración de Nro. Emergencia - Expo ⚠️
-//Func 2: Mensajes al usuario - TPFinal ✅ - Arreglar bug de vibrar cuando no debe o no vibrar
-//Func 3: Llamado de Emergencia - Expo ⚠️
-//Func 7: Identificación de cada Aplicación- TPFinal ❎
+//Func 1: Configuración de Nro. Emergencia - Expo ✅
+//Func 2: Mensajes al usuario - TPFinal ✅
+//Func 3: Llamado de Emergencia - Expo ✅
+//Func 7: Identificación de cada Aplicación- TPFinal ✅ - No lee QRs y no c por qué :|
 
 
 function App() {
 
-  const [currency, setCurrency] = useState('Intercoins'); // Default to Intercoins
-
-  
+  const [currency, setCurrency] = useState('Intercoins');
+  // eslint-disable-next-line
+  const [user, setUser] = useState("");
 
   return (
     <Router>
       <CurrencyContext.Provider value={{ currency, setCurrency }}>
-      <div className="App">
+      <Routes>
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/FTT" element={<FTT />} />
+      </Routes>
+      {user !== "" && (
+        <div className="App">
         <header className="bg">
           <Header/>
         </header>
-        {/* Contenido de página iría acá */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Search" element={<Busqueda />} />
@@ -55,6 +63,7 @@ function App() {
         <div id='Filler' className='fill'></div>
         <BottomNavbar />
       </div>
+      )}
       </CurrencyContext.Provider>
     </Router>
   );
@@ -62,3 +71,24 @@ function App() {
 export default App;
 
 //Supabase pass: PANbGhjFW2bj91qi
+
+
+
+/* 
+____▒▒▒▒▒
+—-▒▒▒▒▒▒▒▒▒
+—–▓▓▓░░▓░
+—▓░▓░░░▓░░░
+—▓░▓▓░░░▓░░░
+—▓▓░░░░▓▓▓▓
+——░░░░░░░░
+—-▓▓▒▓▓▓▒▓▓
+–▓▓▓▒▓▓▓▒▓▓▓
+▓▓▓▓▒▒▒▒▒▓▓▓▓
+░░▓▒░▒▒▒░▒▓░░
+░░░▒▒▒▒▒▒▒░░░
+░░▒▒▒▒▒▒▒▒▒░░
+—-▒▒▒ ——▒▒▒
+–▓▓▓———-▓▓▓
+▓▓▓▓———-▓▓▓▓
+*/
