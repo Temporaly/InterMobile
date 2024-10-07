@@ -465,3 +465,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.expandDong{
+  flex-grow: 1;
+}
+
+.App-Login-Form{
+  
+}

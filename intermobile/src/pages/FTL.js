@@ -6,7 +6,7 @@ import logoLand from "../vendor/logo-land.svg";
 export default function FTT() {
 
     return(
-        <div class="App-FT">
+        <div class="App-FT" style={{height: "100vh"}}>
             <div id='Filler' className='fill' style={{padding: "13%"}}></div>
             <h1 class="App-FT_Welc" >Bienvenido a:</h1>
             <img src={logoLand} alt="logo" className="App-FT_logo" />
@@ -29,7 +29,6 @@ export default function FTT() {
                 </Button>
             </Link>
             </div>
-            <div id='Filler' className='fill' style={{padding: "14.5%"}}></div>
         </div>
     )
 
