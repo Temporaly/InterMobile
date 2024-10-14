@@ -10,7 +10,7 @@ const BottomNavbar = () => {
     <Navbar fixed="bottom" className="justify-content-evenly" style={{ backgroundColor: '#095DB7', borderRadius: '10px', padding: '25px' }}>
       <Nav style={{ display: 'contents' }}>
         <Link to="/Search"><IoSearch size={55} /></Link>
-        <Link to="/"><FaHome size={55} /></Link>
+        <Link to="/Home"><FaHome size={55} /></Link>
         <Link to="/Shop"><MdAttachMoney size={55} /></Link>
       </Nav>
     </Navbar>

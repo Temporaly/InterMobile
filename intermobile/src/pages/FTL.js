@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import logoLand from "../vendor/logo-land.svg";
 
-export default function FTT() {
+export default function LogCentral() {
 
     return(
         <div class="App-FT" style={{height: "100vh"}}>

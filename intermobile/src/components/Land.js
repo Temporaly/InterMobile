@@ -4,13 +4,15 @@ import { Link } from 'react-router-dom';
 import { supabase } from "../utils/supabase";
 import ErrorHandler from './ErrorHandler';
 import { CurrencyContext } from '../App'; // Import CurrencyContext
+import { AuthContext } from '../components/AuthContext'; // Import AuthContext
 
 function HomepageLanding() {
+  const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
   const [user, setUser] = useState(null);
   const [userWall, setUserW] = useState(null);
   const [userPur, setUserP] = useState([]);
   const [error, setError] = useState('');
-  const { currency } = useContext(CurrencyContext); // Get the selected currency
+  const { currency } = useContext(CurrencyContext); // Obtener la moneda seleccionada
 
   const handleError = (message) => {
     setError(message);
@@ -25,11 +27,16 @@ function HomepageLanding() {
 
     async function fetchData() {
       try {
+        // Verifica si el usuario está autenticado
+        if (!auth.isLoggedIn || !auth.IDUsuario) {
+          throw new Error('No estás autenticado.');
+        }
+
         // Fetch user data
         const { data: userData, error: userError } = await supabase
           .from('Usuario')
           .select('*')
-          .eq('IDUsuario', '2')
+          .eq('IDUsuario', auth.IDUsuario) // Usar IDUsuario del contexto
           .single();
 
         if (userError) throw userError;
@@ -72,13 +79,16 @@ function HomepageLanding() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [auth]); // Agregar auth a las dependencias
 
   if (!user || !userWall) {
-    return <div>Loading... 
-      <ErrorHandler message={error} onClose={handleCloseError} /></div>;
+    return (
+      <div>
+        Loading... 
+        <ErrorHandler message={error} onClose={handleCloseError} />
+      </div>
+    );
   }
-
 
   return (
     <div className="homepage-landing">

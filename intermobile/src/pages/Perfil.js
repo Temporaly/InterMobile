@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import GoBackButton from '../components/GoBack';
 import { FaSave, FaTimes } from 'react-icons/fa'; // Importa los íconos necesarios
 import { GoPencil } from "react-icons/go";
 import ErrorHandler from '../components/ErrorHandler';
+import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
 
 function Perfil() {
-
+  const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
   const [error, setError] = useState('');
 
   const handleError = (message) => {
@@ -32,10 +33,14 @@ function Perfil() {
 
   useEffect(() => {
     async function fetchUser() {
+      if (!auth.isLoggedIn || !auth.IDUsuario) {
+        return; // No hacer nada si no hay usuario autenticado
+      }
+
       const { data, error } = await supabase
         .from('Usuario')
         .select('*')
-        .eq('IDUsuario', '2')
+        .eq('IDUsuario', auth.IDUsuario) // Usar IDUsuario del contexto
         .single();
 
       if (error) {
@@ -48,7 +53,7 @@ function Perfil() {
     }
 
     fetchUser();
-  }, []);
+  }, [auth]); // Agregar auth como dependencia
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +71,7 @@ function Perfil() {
         Direccion: formData.Direccion,
         Telefono: formData.Telefono
       })
-      .eq('IDUsuario', '2');
+      .eq('IDUsuario', auth.IDUsuario); // Usar IDUsuario del contexto
 
     if (error) {
       console.error('Error updating user data:', error);

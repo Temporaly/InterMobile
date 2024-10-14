@@ -55,6 +55,7 @@
   font-size: 0; /* Puede no ser necesario si solo se aplica a imágenes */
   display: block;
   border-radius: 50%;
+  width: 65px;
   height: auto;
   margin: 0; /* Asegura que no haya márgenes */
   padding: 0;
@@ -470,6 +471,7 @@
   flex-grow: 1;
 }
 
-.App-Login-Form{
-  
+.saldo-container {
+  padding: 20px;
+  text-align: center;
 }

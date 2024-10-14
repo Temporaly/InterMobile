@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Stack from 'react-bootstrap/Stack';
 import logo from '../vendor/logo.svg';
 import { supabase } from '../utils/supabase';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
+import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
 
 function Header() {
-    const [userData, setUserData] = useState([]);
+    const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         async function fetchUserData() {
+            if (!auth.isLoggedIn || !auth.IDUsuario) {
+                return; // No hacer nada si no hay usuario autenticado
+            }
+
             const { data, error } = await supabase
                 .from('Usuario')
                 .select('*')
-                .eq('IDUsuario', '2')
+                .eq('IDUsuario', auth.IDUsuario) // Usar IDUsuario del contexto
                 .single();
 
             if (error) {
@@ -25,19 +31,25 @@ function Header() {
         }
 
         fetchUserData();
-    }, []);
+    }, [auth]); // Agregar auth como dependencia
 
     return (
         <Stack direction="horizontal" gap={3}>
             <div className="p-2"><img src={logo} alt="logo" className="logo_nav" /></div>
-            <div style={{ fontSize: '20' }} className="p-2 ms-auto fs-3s">{userData.Username}</div>
-            <div className="p-2">
-                <DropdownButton id="dropdown-basic-button" title={<img src={userData.Foto} alt="Pfp" className="pfp" />}>
-                    <Dropdown.Item as={Link} to="/profile">Perfil</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/options">Opciones</Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/logout">Cerrar Sesión</Dropdown.Item>
-                </DropdownButton>
-            </div>
+            {userData ? (
+                <>
+                    <div style={{ fontSize: '20' }} className="p-2 ms-auto fs-3s">{userData.Username}</div>
+                    <div className="p-2">
+                        <DropdownButton id="dropdown-basic-button" title={<img src={userData.Foto} alt="Pfp" className="pfp" />}>
+                            <Dropdown.Item as={Link} to="/profile">Perfil</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/options">Opciones</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/logout">Cerrar Sesión</Dropdown.Item>
+                        </DropdownButton>
+                    </div>
+                </>
+            ) : (
+                <div className="p-2 ms-auto fs-3s">Cargando...</div>
+            )}
         </Stack>
     );
 }
