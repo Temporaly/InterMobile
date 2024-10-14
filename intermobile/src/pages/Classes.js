@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import { FaCalendarAlt } from 'react-icons/fa';
 import CustomCalendar from '../components/Calendar';
 import ErrorHandler from '../components/ErrorHandler';
+import { AuthContext } from '../components/AuthContext';
 
 const CalendarPage = () => {
+  const { auth } = useContext(AuthContext);
   //const [clases, setClases] = useState([]);
   const [materias, setMaterias] = useState([]);
   const [events, setEvents] = useState([]); // Array para almacenar eventos
@@ -39,7 +41,7 @@ const CalendarPage = () => {
         let { data: clasesData, error: clasesError } = await supabase
           .from('Clase')
           .select('*')
-          .eq('IDUsuarioReceptor', 2);
+          .eq('IDUsuarioReceptor', auth.IDUsuario);
 
         if (clasesError) {
           console.error(clasesError);
@@ -73,6 +75,7 @@ const CalendarPage = () => {
     };
 
     fetchData();
+    // eslint-disable-next-line
   }, []); // El array de dependencias vacío asegura que se ejecute solo una vez
 
   // Función para obtener el nombre de la materia a partir de su ID

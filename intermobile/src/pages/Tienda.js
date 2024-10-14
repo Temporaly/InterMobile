@@ -7,7 +7,7 @@ function Tienda() {
     const { auth } = useContext(AuthContext); // Obtener el contexto del usuario
     const [saldo, setSaldo] = useState(0);
     const [amountToBuy, setAmountToBuy] = useState(0);
-    const [cotizacion, setCotizacion] = useState(0); // Valor de intercoin en pesos
+    //const [cotizacion, setCotizacion] = useState(0); // Valor de intercoin en pesos
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -65,8 +65,8 @@ function Tienda() {
             <hr />
             <h2>Tabla de Cotización:</h2>
             <p style={{fontSize: "larger"}}>1 intercoin = 10 AR$</p>
-            <p style={{fontSize: "larger"}}>10 intercoin = 100 AR$</p>
-            <p style={{fontSize: "larger"}}>100 intercoin = 1000 AR$</p>
+            <p style={{fontSize: "larger"}}>10 intercoins = 100 AR$</p>
+            <p style={{fontSize: "larger"}}>100 intercoins = 1000 AR$</p>
             <hr />
             <h3 style={{ textAlign: 'center' }}>Deseo comprar</h3>
             <Form onSubmit={handleBuy} style={{ textAlign: 'center' }}>

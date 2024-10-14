@@ -35,6 +35,7 @@ export default function Register() {
                 Username: username,
                 Contraseña: password,
                 Nombre: nombre,
+                Apellido: " ",
                 Contacto: email,
                 IDBilletera: idBilletera,
                 Foto: 'https://campus.ort.edu.ar/static/archivos/usuarioperfil/87149',

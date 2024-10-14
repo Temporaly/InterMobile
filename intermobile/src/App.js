@@ -9,7 +9,7 @@ import Busqueda from './pages/Busqueda';
 import Tienda from './pages/Tienda.js';
 import Perfil from './pages/Perfil';
 import Opciones from './pages/Opciones.js';
-import CerrarSesion from './pages/CerrarSesion.js';
+import Logout from './pages/Logout.js';
 import Classes from './pages/Classes.js';
 import QRCodeScanner from './pages/QRCodeScanner.js';
 import LogCentral from './pages/FTL.js';
@@ -32,13 +32,12 @@ function App() {
                 {/* Mostrar Header y BottomNavbar solo si el usuario está autenticado */}
                 {auth.isLoggedIn && (
                   <>
-                    <header className="bg">
+                    <header id="Head" className="bg">
                       <Header />
                     </header>
                     <BottomNavbar />
                   </>
                 )}
-
                 <Routes>
                   {/* Rutas públicas */}
                   <Route path="/" element={<LogCentral />} />
@@ -53,7 +52,7 @@ function App() {
                       <Route path="/Shop" element={<Tienda />} />
                       <Route path="/Profile" element={<Perfil />} />
                       <Route path="/Options" element={<Opciones />} />
-                      <Route path="/Logout" element={<CerrarSesion />} />
+                      <Route path="/Logout" element={<Logout />} />
                       <Route path="/Classes" element={<Classes />} />
                       <Route path="/scan-qr" element={<QRCodeScanner />} />
                       <Route path="*" element={<Navigate to="/Home" />} />
@@ -64,7 +63,7 @@ function App() {
                 </Routes>
                 {auth.isLoggedIn && (
                   <>
-                    <div id='Filler' className='fill'></div>
+                    <div id='paddedBozo' className='fill'></div>
                   </>
                 )}
               </div>
@@ -106,7 +105,10 @@ ____▒▒▒▒▒
 //Sprint 1: Buscar ✅
 //Sprint 2: Home y Perfil ✅
 //Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ✅
-//Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) - 14 oct.
+//Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) ✅
+//Sprint 5: Arreglar bugs (Temas, localStorage para el AuthContext y terminar Register con las fotos) - 4 Nov.
+
+
 
 //--- DAI
 //Func 1: Configuración de Nro. Emergencia - Expo ✅

@@ -26,7 +26,7 @@ function Greet() {
 
     return(
         <div>
-            <h1 class="Home_Greet">Bienvenido, {user.Username}!</h1>
+            <h1 className="Home_Greet">Bienvenido, {user.Username}!</h1>
         </div>
     );
 };

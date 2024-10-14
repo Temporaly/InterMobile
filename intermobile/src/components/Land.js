@@ -103,20 +103,26 @@ function HomepageLanding() {
           <span className="intercoins-sub-0">{userWall.Saldo}</span>
           <span className='ColorInc'> {currency}</span>
         </p>
-        <div className="compras-recientes">
-          Compras Recientes:
-        </div>
-        {userPur.map((purchase) => (
-          <p key={purchase.IDCompra} className='class_Mapped'>
+        {console.log(userPur.length)}
+        {userPur.length !== 0 && (
+          <div>
+            <div className="compras-recientes">
+            Compras Recientes:
+            </div>
+            {userPur.map((purchase) => (
+            <p key={purchase.IDCompra} className='class_Mapped'>
             Clase - {purchase.Total} {currency}
-          </p>
-        ))}
+            </p>
+            ))}
+          </div>
+        )}
+        
       </div>
       <div className='Home_ButtonAllign'>
         <Link to="/Classes">
           <Button
             variant="primary"
-            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: "#FBBC05", color: "#083E78", margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
+            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: "#FBBC05", color: "rgb(0, 0, 0)", margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
           >
             Ver Clases Próximas
           </Button>

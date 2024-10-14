@@ -6,9 +6,9 @@ import logoLand from "../vendor/logo-land.svg";
 export default function LogCentral() {
 
     return(
-        <div class="App-FT" style={{height: "100vh"}}>
+        <div className="App-FT" style={{height: "100vh"}}>
             <div id='Filler' className='fill' style={{padding: "13%"}}></div>
-            <h1 class="App-FT_Welc" >Bienvenido a:</h1>
+            <h1 className="App-FT_Welc" >Bienvenido a:</h1>
             <img src={logoLand} alt="logo" className="App-FT_logo" />
             <div id='Filler' className='fill' style={{padding: "17%"}}></div>
             <div className='Home_ButtonAllign'>

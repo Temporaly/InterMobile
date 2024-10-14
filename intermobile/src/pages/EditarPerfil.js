@@ -17,14 +17,16 @@ function EditarPerfil()
 
 export default EditarPerfil*/
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import GoBackButton from '../components/GoBack';
-import { FaSave, FaTimes } from 'react-icons/fa'; // Importa los íconos necesarios
+import { FaSave, FaTimes } from 'react-icons/fa';
 import { GoPencil } from "react-icons/go";
+import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
 
 function Perfil() {
+  const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
   const [user, setUser] = useState({
     Username: '',
     Nombre: '',
@@ -38,10 +40,12 @@ function Perfil() {
 
   useEffect(() => {
     async function fetchUser() {
+      if (!auth.IDUsuario) return; // Asegurarse de que hay un IDUsuario
+
       const { data, error } = await supabase
         .from('Usuario')
         .select('*')
-        .eq('IDUsuario', '2')
+        .eq('IDUsuario', auth.IDUsuario) // Usar IDUsuario del contexto
         .single();
 
       if (error) {
@@ -53,7 +57,7 @@ function Perfil() {
     }
 
     fetchUser();
-  }, []);
+  }, [auth.IDUsuario]); // Dependencia en IDUsuario
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,7 +75,7 @@ function Perfil() {
         Direccion: formData.Direccion,
         Telefono: formData.Telefono
       })
-      .eq('IDUsuario', '2');
+      .eq('IDUsuario', auth.IDUsuario); // Usar IDUsuario del contexto
 
     if (error) {
       console.error('Error updating user data:', error);
@@ -155,7 +159,10 @@ function Perfil() {
             <p>{user.Direccion}</p>
             <h3 className="Profile_PaddedTop">Teléfono</h3>
             <p>{user.Telefono}</p>
-            <a onClick={() => setIsEditing(true)} className="EditInfo" href=''><GoPencil size={40} /> Editar Información</a>
+            {/*eslint-disable-next-line*/}
+            <a onClick={() => setIsEditing(true)} className="EditInfo" href=''>
+              <GoPencil size={40} /> Editar Información
+            </a>
           </div>
         )}
       </div>
@@ -164,4 +171,3 @@ function Perfil() {
 }
 
 export default Perfil;
-
