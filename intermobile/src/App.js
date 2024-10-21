@@ -108,10 +108,19 @@ ____▒▒▒▒▒
 //Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) ✅
 //Sprint 5: Arreglar bugs (Temas, localStorage para el AuthContext y terminar Register con las fotos) - 4 Nov.
 
+/* 
+Change Log (Sprint 5):
 
+21/10:
+- ErrorHandlers agregados donde no estaban
+- Ahora el AuthContext se guarda dentro de localStorage
+- Landing, Login y Register ahora se fijan en el AuthContext y en el caso que haya un usuario redirigir a Home
+
+
+*/
 
 //--- DAI
 //Func 1: Configuración de Nro. Emergencia - Expo ✅
 //Func 2: Mensajes al usuario - TPFinal ✅
 //Func 3: Llamado de Emergencia - Expo ✅
-//Func 7: Identificación de cada Aplicación- TPFinal ✅ - No lee QRs y no c por qué :|
+//Func 7: Identificación de cada Aplicación - TPFinal ✅ - No lee QRs y no c por qué :|

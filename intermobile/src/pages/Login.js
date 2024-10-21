@@ -1,15 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import logoLand from "../vendor/logo-land.svg";
 import { AuthContext } from '../components/AuthContext';
 import { supabase } from '../utils/supabase';
+import ErrorHandler from '../components/ErrorHandler';
 
 function Login() {
     const { login } = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
+
+    const handleError = (message) => {
+        setError(message);
+    };
+    
+    const handleCloseError = () => {
+        setError('');
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -23,6 +34,7 @@ function Login() {
 
         if (error) {
             console.error('Error al iniciar sesión:', error.message);
+            handleError('Error al Iniciar Sesión: ' + error.message);
             return; // Manejar el error
         }
 
@@ -34,8 +46,18 @@ function Login() {
         }
     };
 
+    useEffect(() => {
+
+        if(auth.isLoggedIn)
+        {
+            navigate('/Home');
+        }
+
+    })
+
     return (
         <div className="App-FT" style={{ height: "100vh", display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+            <ErrorHandler message={error} onClose={handleCloseError} />
             <div className='fill'></div>
             <h1 className="App-FT_Welc">Iniciar Sesión</h1>
             <img src={logoLand} alt="logo" className="App-FT_logo" />

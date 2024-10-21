@@ -1,17 +1,28 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { AuthContext } from '../components/AuthContext';
 import { supabase } from '../utils/supabase';
+import ErrorHandler from '../components/ErrorHandler';
 
 export default function Register() {
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [nombre, setNombre] = useState('');
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+
+    const handleError = (message) => {
+        setError(message);
+    };
+    
+    const handleCloseError = () => {
+        setError('');
+    };
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -23,7 +34,8 @@ export default function Register() {
 
         if (billeteraError) {
             console.error('Error al crear billetera:', billeteraError);
-            navigate('/'); 
+            handleError('Error en el Registro: ' + billeteraError.message);
+            //navigate('/'); 
             return;
         }
 
@@ -43,7 +55,8 @@ export default function Register() {
 
         if (usuarioError) {
             console.error('Error al crear usuario:', usuarioError.message);
-            navigate('/'); 
+            handleError('Error en el Registro: ' + usuarioError.message);
+            //navigate('/'); 
             return;
         }
 
@@ -55,7 +68,8 @@ export default function Register() {
 
         if (consultaError) {
             console.error('Error al obtener el ID del usuario:', consultaError.message);
-            navigate('/'); 
+            handleError('Error en el Registro: ' + consultaError.message);
+            //navigate('/'); 
             return;
         }
 
@@ -67,7 +81,8 @@ export default function Register() {
 
         if (updateError) {
             console.error('Error al actualizar IDBilletera:', updateError.message);
-            navigate('/'); 
+            handleError('Error en el Registro: ' + updateError.message);
+            //navigate('/'); 
             return;
         }
 
@@ -77,8 +92,18 @@ export default function Register() {
         navigate('/Home');
     };
 
+    useEffect(() => {
+
+        if(auth.isLoggedIn)
+        {
+            navigate('/Home');
+        }
+
+    })
+
     return (
         <div className="App-FT" style={{ height: "100vh", display: 'flex', flexDirection: "column", alignItems: "center" }}>
+            <ErrorHandler message={error} onClose={handleCloseError} />
             <h1 className="App-FT_Welc" style={{ margin: "20%" }}>Registro</h1>
             <div className='fill'></div>
             <Form style={{ width: '300px', margin: '20px' }} onSubmit={handleRegister}>

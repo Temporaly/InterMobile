@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import { AuthContext } from '../components/AuthContext'; // Asegúrate de que el contexto esté definido
+import ErrorHandler from '../components/ErrorHandler';
 
 function Tienda() {
     const { auth } = useContext(AuthContext); // Obtener el contexto del usuario
@@ -9,6 +10,14 @@ function Tienda() {
     const [amountToBuy, setAmountToBuy] = useState(0);
     //const [cotizacion, setCotizacion] = useState(0); // Valor de intercoin en pesos
     const [error, setError] = useState('');
+
+    const handleError = (message) => {
+        setError(message);
+    };
+    
+    const handleCloseError = () => {
+        setError('');
+    };
 
     useEffect(() => {
         async function fetchData() {
@@ -23,7 +32,7 @@ function Tienda() {
 
             if (walletError) {
                 console.error('Error fetching wallet data:', walletError);
-                setError('Error al obtener el saldo.');
+                handleError('Error al obtener el saldo.');
                 return;
             }
 
@@ -37,7 +46,7 @@ function Tienda() {
         e.preventDefault();
 
         if (amountToBuy <= 0) {
-            setError('La cantidad a comprar debe ser mayor a 0.');
+            handleError('La cantidad a comprar debe ser mayor a 0.');
             return;
         }
 
@@ -51,16 +60,17 @@ function Tienda() {
 
         if (updateError) {
             console.error('Error updating wallet:', updateError);
-            setError('Error al actualizar el saldo.');
+            handleError('Error al actualizar el saldo.');
         } else {
             setSaldo(newSaldo);
             setAmountToBuy(0); // Resetear input
-            setError('');
+            handleError('');
         }
     };
 
     return (
         <div className="saldo-container">
+            <ErrorHandler message={error} onClose={handleCloseError} />
             <h1>Tu Saldo: {saldo} Intercoins</h1>
             <hr />
             <h2>Tabla de Cotización:</h2>

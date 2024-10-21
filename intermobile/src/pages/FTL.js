@@ -1,9 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import logoLand from "../vendor/logo-land.svg";
+import { AuthContext } from '../components/AuthContext';
 
 export default function LogCentral() {
+
+    const navigate = useNavigate();
+    const { auth } = useContext(AuthContext);
+
+    useEffect(() => {
+
+        if(auth.isLoggedIn)
+        {
+            navigate('/Home');
+        }
+
+    })
 
     return(
         <div className="App-FT" style={{height: "100vh"}}>
