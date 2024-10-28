@@ -116,6 +116,9 @@ Change Log (Sprint 5):
 - Ahora el AuthContext se guarda dentro de localStorage
 - Landing, Login y Register ahora se fijan en el AuthContext y en el caso que haya un usuario redirigir a Home
 
+28/10:
+- Creación del bucket arbys (Se tendrá que migrar toda la estructura -~-) //No porque si dejamos que sea publico podemos agarrar y usar URLs todavía
+- Ahora cuando te registras podés subir una foto al bucket de Supabase
 
 */
 
