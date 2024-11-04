@@ -6,10 +6,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Link } from 'react-router-dom'; // Importar Link desde react-router-dom
 import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
+import { useTheme } from '../utils/ThemeContext.js';
 
 function Header() {
     const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
     const [userData, setUserData] = useState(null);
+    const { theme } = useTheme();
 
     useEffect(() => {
         async function fetchUserData() {
@@ -33,14 +35,22 @@ function Header() {
         fetchUserData();
     }, [auth]); // Agregar auth como dependencia
 
+    useEffect(() => {
+        // Buscar el elemento y cambiar su estilo de fondo cuando cambie el tema
+        const dropdownButton = document.getElementById('dropdown-basic-button');
+        if (dropdownButton) {
+            dropdownButton.style.backgroundColor = theme.mainColor; // Cambia el color de fondo
+        }
+    }, [theme]); // Ejecuta el efecto cuando el tema cambie
+
     return (
         <Stack direction="horizontal" gap={3}>
             <div className="p-2"><img src={logo} alt="logo" className="logo_nav" /></div>
             {userData ? (
                 <>
-                    <div style={{ fontSize: '20' }} className="p-2 ms-auto fs-3s">{userData.Username}</div>
+                    <div style={{ fontSize: '20', color: theme.text }} className="p-2 ms-auto fs-3s">{userData.Username}</div>
                     <div className="p-2">
-                        <DropdownButton id="dropdown-basic-button" title={<img src={userData.Foto} alt="Pfp" className="pfp" />}>
+                        <DropdownButton id="dropdown-basic-button" title={<img src={userData.Foto} alt="Pfp" className="pfp"/>}>
                             <Dropdown.Item as={Link} to="/profile">Perfil</Dropdown.Item>
                             <Dropdown.Item as={Link} to="/options">Opciones</Dropdown.Item>
                             <Dropdown.Item as={Link} to="/logout">Cerrar Sesión</Dropdown.Item>

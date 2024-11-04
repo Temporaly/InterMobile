@@ -16,11 +16,13 @@ import LogCentral from './pages/FTL.js';
 import Login from './pages/Login.js';
 import Register from './pages/Register.js';
 import { AuthProvider, AuthContext } from './components/AuthContext.js';
+import { useTheme } from './utils/ThemeContext.js';
 
 export const CurrencyContext = createContext();
 
 function App() {
   const [currency, setCurrency] = useState('Intercoins');
+  const { theme } = useTheme();
 
   return (
     <AuthProvider>
@@ -28,13 +30,14 @@ function App() {
         <CurrencyContext.Provider value={{ currency, setCurrency }}>
           <AuthContext.Consumer>
             {({ auth }) => (
-              <div className="App">
+              <div className="App" style={{background: theme.background}}>
                 {/* Mostrar Header y BottomNavbar solo si el usuario está autenticado */}
                 {auth.isLoggedIn && (
                   <>
-                    <header id="Head" className="bg">
+                    <header id="Head" className="bg" style={{backgroundColor: theme.mainColor}}>
                       <Header />
                     </header>
+                    {console.log(theme)}
                     <BottomNavbar />
                   </>
                 )}
@@ -106,7 +109,8 @@ ____▒▒▒▒▒
 //Sprint 2: Home y Perfil ✅
 //Sprint 3: Editar Perfil, Ver Clases Próximas y Opciónes ✅
 //Sprint 4: Tienda y sistema de Usuarios (Login, Registro y Logout) ✅
-//Sprint 5: Arreglar bugs (Temas, localStorage para el AuthContext y terminar Register con las fotos) - 4 Nov.
+//Sprint 5: Arreglar bugs (Temas, localStorage para el AuthContext y terminar Register con las fotos) ✅
+//Sprint 6: Diseñar el Modo Oscuro en todas las páginas (Preparar lo que el profe pidió*)
 
 /* 
 Change Log (Sprint 5):
@@ -120,6 +124,15 @@ Change Log (Sprint 5):
 - Creación del bucket arbys (Se tendrá que migrar toda la estructura -~-) //No porque si dejamos que sea publico podemos agarrar y usar URLs todavía
 - Ahora cuando te registras podés subir una foto al bucket de Supabase
 
+4/11:
+- Implementación parcial de temas
+
+*Sprint 6:
+
+3 Carpetas,
++Sinergia: la presentación
+TPs del comienzo
+Carpeta con el proyecto entero (Esto es código, la base de datos y una explicación entera de cómo instalarlo y correrlo)
 */
 
 //--- DAI

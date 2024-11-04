@@ -5,6 +5,7 @@ import { supabase } from "../utils/supabase";
 import ErrorHandler from './ErrorHandler';
 import { CurrencyContext } from '../App'; // Import CurrencyContext
 import { AuthContext } from '../components/AuthContext'; // Import AuthContext
+import { useTheme } from '../utils/ThemeContext.js';
 
 function HomepageLanding() {
   const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
@@ -13,6 +14,7 @@ function HomepageLanding() {
   const [userPur, setUserP] = useState([]);
   const [error, setError] = useState('');
   const { currency } = useContext(CurrencyContext); // Obtener la moneda seleccionada
+  const { theme } = useTheme();
 
   const handleError = (message) => {
     setError(message);
@@ -91,26 +93,26 @@ function HomepageLanding() {
   }
 
   return (
-    <div className="homepage-landing">
-      <div className="bienvenido-hungry-dued">
+    <div className="homepage-landing" style={{backgroundColor: theme.background}}>
+      <div className="bienvenido-hungry-dued" style={{ color: theme.text }}>
         Bienvenido, {user.Username}!
       </div>
-      <div className="group-1">
-        <div className="saldo-actual">
+      <div className="group-1" style={{background: theme.lighterMain}}>
+        <div className="saldo-actual" style={{ color: theme.text }}>
           Saldo Actual:
         </div>
         <p className="intercoins">
-          <span className="intercoins-sub-0">{userWall.Saldo}</span>
+          <span className="intercoins-sub-0" style={{ color: theme.text }}>{userWall.Saldo}</span>
           <span className='ColorInc'> {currency}</span>
         </p>
         {console.log(userPur.length)}
         {userPur.length !== 0 && (
           <div>
-            <div className="compras-recientes">
+            <div className="compras-recientes" style={{ color: theme.text }}>
             Compras Recientes:
             </div>
             {userPur.map((purchase) => (
-            <p key={purchase.IDCompra} className='class_Mapped'>
+            <p key={purchase.IDCompra} className='class_Mapped' style={{ color: theme.text }}>
             Clase - {purchase.Total} {currency}
             </p>
             ))}
@@ -122,7 +124,7 @@ function HomepageLanding() {
         <Link to="/Classes">
           <Button
             variant="primary"
-            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: "#FBBC05", color: "rgb(0, 0, 0)", margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
+            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: "#FBBC05", color: theme.text, margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
           >
             Ver Clases Próximas
           </Button>
@@ -130,7 +132,7 @@ function HomepageLanding() {
         <Link to="/Search">
           <Button
             variant="primary"
-            style={{ padding: "4%", paddingRight: "27%", paddingLeft: "27%", color: "#000000", margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
+            style={{ padding: "4%", paddingRight: "27%", paddingLeft: "27%", background: theme.mainColor  , color: theme.text, margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
           >
             Buscar Profesores
           </Button>

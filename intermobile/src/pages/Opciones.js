@@ -2,10 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { CurrencyContext } from '../App'; // Import CurrencyContext
+import { useTheme } from '../utils/ThemeContext'; // Import ThemeContext
 
 const Opciones = () => {
   const navigate = useNavigate();
-  const { changeTheme } = " "; // Access the theme change function
+  const { toggleTheme } = useTheme(); // Access the theme change function
   const { setCurrency } = useContext(CurrencyContext); // Access the currency setter
 
   const [formState, setFormState] = useState({
@@ -43,7 +44,7 @@ const Opciones = () => {
     console.log('Configuración guardada:', formState);
 
     if (formState.theme) {
-      changeTheme(formState.theme);
+      toggleTheme(formState.theme); // Change theme globally
     }
 
     if (formState.currency) {
@@ -102,14 +103,14 @@ const Opciones = () => {
 
           {/* Show the About button only if the device has a camera */}
           {hasCamera && (
-              <Button 
-                variant="secondary" 
-                onClick={handleScanQR} 
-                style={{ marginTop: "15%" }}
-              >
-                About
-              </Button>
-            )}
+            <Button 
+              variant="secondary" 
+              onClick={handleScanQR} 
+              style={{ marginTop: "15%" }}
+            >
+              About
+            </Button>
+          )}
         </Col>
       </Row>
     </Container>
