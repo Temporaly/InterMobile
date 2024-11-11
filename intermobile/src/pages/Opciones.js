@@ -8,6 +8,7 @@ const Opciones = () => {
   const navigate = useNavigate();
   const { toggleTheme } = useTheme(); // Access the theme change function
   const { setCurrency } = useContext(CurrencyContext); // Access the currency setter
+  const { theme } = useTheme();
 
   const [formState, setFormState] = useState({
     theme: '',
@@ -63,11 +64,11 @@ const Opciones = () => {
     <Container>
       <Row className="justify-content-center">
         <Col md={8}>
-          <h2 style={{ paddingTop: "4%" }}>Opciones</h2>
+          <h2 style={{ paddingTop: "4%", color: theme.text }}>Opciones</h2>
           <Form onSubmit={handleSubmit}>
-            <h5>Visuales</h5>
+            <h5 style={{color: theme.text}}>Visuales</h5>
             <Form.Group controlId="formTheme" className='paddedBott'>
-              <Form.Label>Tema</Form.Label>
+              <Form.Label style={{color: theme.text}}>Tema</Form.Label>
               <Form.Control
                 as="select"
                 name="theme"
@@ -80,9 +81,9 @@ const Opciones = () => {
               </Form.Control>
             </Form.Group>
 
-            <h5>Monetarias</h5>
+            <h5 style={{color: theme.text}}>Monetarias</h5>
             <Form.Group controlId="formCurrency" className='paddedBott'>
-              <Form.Label>Mostrar Precio en</Form.Label>
+              <Form.Label style={{color: theme.text}}>Mostrar Precio en</Form.Label>
               <Form.Control
                 as="select"
                 name="currency"
@@ -96,7 +97,7 @@ const Opciones = () => {
               </Form.Control>
             </Form.Group>
 
-            <Button variant="primary" type="submit" style={{ color: "#FFFFFF", marginTop: "15%" }}>
+            <Button variant="primary" type="submit" style={{ color: "#ffffff", background: theme.mainColor, marginTop: "15%" }}>
               Guardar Cambios
             </Button>
           </Form>

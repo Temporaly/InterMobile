@@ -2,8 +2,11 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../App.css';
+import { useTheme } from '../utils/ThemeContext.js';
 
 const UserCard = ({ user, materias, materiaxpersona }) => {
+
+  const { theme } = useTheme();
 
   // Función para obtener los nombres de las materias que el usuario enseña
   const getMateriasProfesor = () => {
@@ -30,14 +33,14 @@ const UserCard = ({ user, materias, materiaxpersona }) => {
   console.log("Materias Profe: " + materiasProfesor)
 
   return (
-    <Card style={{ backgroundColor: '#3A95B5', marginBottom: '5%' }}>
+    <Card style={{ backgroundColor: theme.lighterMain, marginBottom: '5%' }}>
       <Card.Body>
         <Card.Title>{user.Nombre + " " + user.Apellido}</Card.Title>
         <Card.Img class="Cardpfp" src={user.Foto} />
         <Card.Text className='paddedBott'>
-          {materiasProfesor ? `Profesor de ${materiasProfesor}` : 'Profesor de materias desconocidas'}
+          {materiasProfesor ? `Profesor de ${materiasProfesor}` : 'Alumno'}
         </Card.Text>
-        <Button variant="primary">Contactar</Button>
+        <Button variant="primary" style={{color: theme.lighterMain, background: theme.mainColor}}>Contactar</Button>
       </Card.Body>
     </Card>
   );

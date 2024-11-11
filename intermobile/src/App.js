@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header.js';
 import './bootstrap.css';
@@ -24,13 +24,17 @@ function App() {
   const [currency, setCurrency] = useState('Intercoins');
   const { theme } = useTheme();
 
+  useEffect(() => {
+    document.body.style.background = theme.background;
+  },);
+
   return (
     <AuthProvider>
       <Router>
         <CurrencyContext.Provider value={{ currency, setCurrency }}>
           <AuthContext.Consumer>
             {({ auth }) => (
-              <div className="App" style={{background: theme.background}}>
+              <div className="App">
                 {/* Mostrar Header y BottomNavbar solo si el usuario está autenticado */}
                 {auth.isLoggedIn && (
                   <>
@@ -139,4 +143,4 @@ Carpeta con el proyecto entero (Esto es código, la base de datos y una explicac
 //Func 1: Configuración de Nro. Emergencia - Expo ✅
 //Func 2: Mensajes al usuario - TPFinal ✅
 //Func 3: Llamado de Emergencia - Expo ✅
-//Func 7: Identificación de cada Aplicación - TPFinal ✅ - No lee QRs y no c por qué :|
+//Func 7: Identificación de cada Aplicación - TPFinal ✅

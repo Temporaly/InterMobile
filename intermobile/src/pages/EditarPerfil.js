@@ -1,22 +1,3 @@
-/*import React from "react";
-import sillyguy from '../vendor/sillyguy.jpg'
-import GoBackButton from "../components/GoBack";
-
-const SillyWidth = '75%';
-
-function EditarPerfil()
-{
-    return(
-        <div className="ProfileTop">
-            <GoBackButton/>
-            <img src={sillyguy} alt="Cat" className="Silly" style={{width: SillyWidth, paddingTop: 125}} />
-            <h2 className="Profile_UsernameText">Huh?</h2>
-        </div>
-    );
-}
-
-export default EditarPerfil*/
-
 import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
@@ -24,8 +5,9 @@ import GoBackButton from '../components/GoBack';
 import { FaSave, FaTimes } from 'react-icons/fa';
 import { GoPencil } from "react-icons/go";
 import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
+import { useTheme } from '../utils/ThemeContext.js';
 
-function Perfil() {
+function DummyPerfil() {
   const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
   const [user, setUser] = useState({
     Username: '',
@@ -37,6 +19,7 @@ function Perfil() {
   });
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({ ...user });
+  const { theme } = useTheme();
 
   useEffect(() => {
     async function fetchUser() {
@@ -95,7 +78,7 @@ function Perfil() {
       <GoBackButton />
       <div className="ProfileTop">
         <img src={user.Foto} alt="Profile" className="ProfilePfp" />
-        <h1 className="Profile_UsernameText">{user.Username}</h1>
+        <h1 className="Profile_UsernameText" style={{color: theme.text}}>{user.Username}</h1>
       </div>
       <div className="Profile_DataContainer">
         {isEditing ? (
@@ -153,12 +136,12 @@ function Perfil() {
           </Form>
         ) : (
           <div>
-            <h3 className="Profile_PaddedTop">Nombre y Apellido</h3>
-            <p>{user.Nombre + " " + user.Apellido}</p>
-            <h3 className="Profile_PaddedTop">Dirección</h3>
-            <p>{user.Direccion}</p>
-            <h3 className="Profile_PaddedTop">Teléfono</h3>
-            <p>{user.Telefono}</p>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Nombre y Apellido</h3>
+            <p style={{color: theme.text}}>{user.Nombre + " " + user.Apellido}</p>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Dirección</h3>
+            <p style={{color: theme.text}}>{user.Direccion}</p>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Teléfono</h3>
+            <p style={{color: theme.text}}>{user.Telefono}</p>
             {/*eslint-disable-next-line*/}
             <a onClick={() => setIsEditing(true)} className="EditInfo" href=''>
               <GoPencil size={40} /> Editar Información
@@ -170,4 +153,4 @@ function Perfil() {
   );
 }
 
-export default Perfil;
+export default DummyPerfil;

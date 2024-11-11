@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import { AuthContext } from '../components/AuthContext'; // Asegúrate de que el contexto esté definido
 import ErrorHandler from '../components/ErrorHandler';
+import { useTheme } from '../utils/ThemeContext.js';
 
 function Tienda() {
     const { auth } = useContext(AuthContext); // Obtener el contexto del usuario
@@ -10,6 +11,7 @@ function Tienda() {
     const [amountToBuy, setAmountToBuy] = useState(0);
     //const [cotizacion, setCotizacion] = useState(0); // Valor de intercoin en pesos
     const [error, setError] = useState('');
+    const { theme } = useTheme();
 
     const handleError = (message) => {
         setError(message);
@@ -71,14 +73,14 @@ function Tienda() {
     return (
         <div className="saldo-container">
             <ErrorHandler message={error} onClose={handleCloseError} />
-            <h1>Tu Saldo: {saldo} Intercoins</h1>
+            <h1 style={{color: theme.text}}>Tu Saldo: {saldo} Intercoins</h1>
             <hr />
-            <h2>Tabla de Cotización:</h2>
-            <p style={{fontSize: "larger"}}>1 intercoin = 10 AR$</p>
-            <p style={{fontSize: "larger"}}>10 intercoins = 100 AR$</p>
-            <p style={{fontSize: "larger"}}>100 intercoins = 1000 AR$</p>
+            <h2 style={{color: theme.text}}>Tabla de Cotización:</h2>
+            <p style={{fontSize: "larger", color: theme.text}}>1 intercoin = 10 AR$</p>
+            <p style={{fontSize: "larger", color: theme.text}}>10 intercoins = 100 AR$</p>
+            <p style={{fontSize: "larger", color: theme.text}}>100 intercoins = 1000 AR$</p>
             <hr />
-            <h3 style={{ textAlign: 'center' }}>Deseo comprar</h3>
+            <h3 style={{ textAlign: 'center', color: theme.text }}>Deseo comprar</h3>
             <Form onSubmit={handleBuy} style={{ textAlign: 'center' }}>
                 <Form.Group controlId="amountToBuy">
                     <Form.Control
@@ -89,9 +91,9 @@ function Tienda() {
                         required
                         style={{float: "left"}}
                     />
-                    <span> Intercoins</span>
+                    <span style={{color: theme.text}}> Intercoins</span>
                 </Form.Group>
-                <Button variant="primary" type="submit">Comprar</Button>
+                <Button variant="primary" type="submit" style={{background: theme.mainColor, color: theme.text}}>Comprar</Button>
             </Form>
             {error && <p className="error-message">{error}</p>}
         </div>

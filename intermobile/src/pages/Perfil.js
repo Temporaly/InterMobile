@@ -7,10 +7,12 @@ import { FaSave, FaTimes } from 'react-icons/fa'; // Importa los íconos necesar
 import { GoPencil } from "react-icons/go";
 import ErrorHandler from '../components/ErrorHandler';
 import { AuthContext } from '../components/AuthContext'; // Importar AuthContext
+import { useTheme } from '../utils/ThemeContext.js';
 
 function Perfil() {
   const { auth } = useContext(AuthContext); // Obtener el contexto de autenticación
   const [error, setError] = useState('');
+  const { theme } = useTheme();
 
   const handleError = (message) => {
     setError(message);
@@ -92,13 +94,13 @@ function Perfil() {
       <GoBackButton />
       <div className="ProfileTop">
         <img src={user.Foto} alt="Profile" className="ProfilePfp" />
-        <h1 className="Profile_UsernameText">{user.Username}</h1>
+        <h1 className="Profile_UsernameText" style={{color: theme.text}}>{user.Username}</h1>
       </div>
       <div className="Profile_DataContainer">
         {isEditing ? (
           <Form onSubmit={handleSubmit} className="profile-form">
             <Form.Group controlId="formNombre">
-              <Form.Label>Nombre</Form.Label>
+              <Form.Label style={{color: theme.text}}>Nombre</Form.Label>
               <Form.Control
                 type="text"
                 name="Nombre"
@@ -109,7 +111,7 @@ function Perfil() {
               />
             </Form.Group>
             <Form.Group controlId="formApellido">
-              <Form.Label>Apellido</Form.Label>
+              <Form.Label style={{color: theme.text}}>Apellido</Form.Label>
               <Form.Control
                 type="text"
                 name="Apellido"
@@ -120,7 +122,7 @@ function Perfil() {
               />
             </Form.Group>
             <Form.Group controlId="formDireccion">
-              <Form.Label>Dirección</Form.Label>
+              <Form.Label style={{color: theme.text}}>Dirección</Form.Label>
               <Form.Control
                 type="text"
                 name="Direccion"
@@ -131,7 +133,7 @@ function Perfil() {
               />
             </Form.Group>
             <Form.Group controlId="formTelefono">
-              <Form.Label>Teléfono</Form.Label>
+              <Form.Label style={{color: theme.text}}>Teléfono</Form.Label>
               <Form.Control
                 type="text"
                 name="Telefono"
@@ -151,13 +153,13 @@ function Perfil() {
           </Form>
         ) : (
           <div>
-            <h3 className="Profile_PaddedTop">Nombre y Apellido</h3>
-            <p>{user.Nombre + " " + user.Apellido}</p>
-            <h3 className="Profile_PaddedTop">Dirección</h3>
-            <p>{user.Direccion}</p>
-            <h3 className="Profile_PaddedTop">Teléfono</h3>
-            <p>{user.Telefono}</p>
-            <a onClick={() => setIsEditing(true)} className="EditInfo"><GoPencil size={40} /> Editar Información</a>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Nombre y Apellido</h3>
+            <p style={{color: theme.text}}>{user.Nombre + " " + user.Apellido}</p>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Dirección</h3>
+            <p style={{color: theme.text}}>{user.Direccion}</p>
+            <h3 className="Profile_PaddedTop" style={{color: theme.text}}>Teléfono</h3>
+            <p style={{color: theme.text}}>{user.Telefono}</p>
+            <a onClick={() => setIsEditing(true)} className="EditInfo" style={{color: theme.mainColor}}><GoPencil size={40} /> Editar Información</a>
           </div>
         )}
       </div>

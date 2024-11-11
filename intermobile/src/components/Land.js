@@ -124,7 +124,7 @@ function HomepageLanding() {
         <Link to="/Classes">
           <Button
             variant="primary"
-            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: "#FBBC05", color: theme.text, margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
+            style={{ padding: "4%", paddingLeft: "25%", paddingRight: "25%", background: theme.secondaryColor, color: theme.text, margin: "5%", marginTop: "2.5%", marginBottom: "1.5%" }}
           >
             Ver Clases Próximas
           </Button>

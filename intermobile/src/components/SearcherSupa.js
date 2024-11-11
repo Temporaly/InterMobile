@@ -3,12 +3,14 @@ import { Form, FormControl, InputGroup } from 'react-bootstrap';
 import { supabase } from '../utils/supabase';
 import UserCard from './Card'; // Asegúrate de que la ruta sea correcta
 import ErrorHandler from './ErrorHandler';
+import { useTheme } from '../utils/ThemeContext.js';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [listMaterias, setMaterias] = useState([]);
   const [materiasXPerson, setMateriasXPerson] = useState([]);
+  const { theme } = useTheme();
 
   const [error, setError] = useState('');
 
@@ -73,13 +75,13 @@ const SearchBar = () => {
   return (
     <div className='search'>
       <Form onSubmit={handleSearch}>
-        <InputGroup className="mb-3 align-items-center">
+        <InputGroup  className="mb-3 align-items-center">
           <FormControl
             type="text"
             placeholder="Buscar..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            style={{ borderRadius: '20px', backgroundColor: '#3A95B5', paddingTop: '4%', paddingBottom: '4%' }}
+            style={{ borderRadius: '20px', backgroundColor: theme.mainColor, paddingTop: '4%', paddingBottom: '4%', border: "0" }}
           />
           {/* <InputGroup>
             <Button type="submit" variant="primary" style={{ borderRadius: '20px' }}>Buscar</Button>
@@ -88,7 +90,7 @@ const SearchBar = () => {
       </Form>
       {results.length > 0 && (
         <div>
-          <h2 className='HomeRec'>Resultados de la búsqueda:</h2>
+          <h2 className='HomeRec' style={{color: theme.text}}>Resultados de la búsqueda:</h2>
           {results.map((result) => (
             <UserCard 
               key={result.IDUsuario} // Asegúrate de tener una clave única para cada elemento

@@ -41,7 +41,7 @@ function Header() {
         if (dropdownButton) {
             dropdownButton.style.backgroundColor = theme.mainColor; // Cambia el color de fondo
         }
-    }, [theme]); // Ejecuta el efecto cuando el tema cambie
+    }, ); // Ejecuta el efecto cuando el tema cambie
 
     return (
         <Stack direction="horizontal" gap={3}>

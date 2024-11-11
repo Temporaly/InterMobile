@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useTheme } from '../utils/ThemeContext.js';
 
 const CustomCalendar = ({ events }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const { theme } = useTheme();
 
   const daysInMonth = (month, year) => {
     return new Date(year, month + 1, 0).getDate();
@@ -39,11 +41,11 @@ const CustomCalendar = ({ events }) => {
     const year = currentDate.getFullYear();
 
     return (
-      <div className="calendar" style={{paddingBottom:"5%"}}>
+      <div className="calendar" style={{paddingBottom:"5%", color: theme.text}}>
         <div className="calendar-header">
-          <Button onClick={goToPreviousMonth} style={{color: "#FFFFFF"}}>Anterior</Button>
+          <Button onClick={goToPreviousMonth} style={{backgroundColor: theme.mainColor, color: theme.text}}>Anterior</Button>
           <h2>{`${monthName} ${year}`}</h2>
-          <Button onClick={goToNextMonth} style={{color: "#FFFFFF"}}>Siguiente</Button>
+          <Button onClick={goToNextMonth} style={{backgroundColor: theme.mainColor, color: theme.text}}>Siguiente</Button>
         </div>
         <div className="calendar-grid">
           {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map((day) => (

@@ -3,7 +3,7 @@ import React from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useTheme } from '../ThemeContext';
 
-const ThemeTest = () => {
+const DummyThemeTest = () => {
   const { theme, setTheme, currentTheme } = useTheme();
   const [currency, setCurrency] = React.useState('');
   const [emailNotifications, setEmailNotifications] = React.useState(false);
@@ -77,4 +77,4 @@ const ThemeTest = () => {
   );
 };
 
-export default ThemeTest;
+export default DummyThemeTest;

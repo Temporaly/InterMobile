@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import UserCard from './Card'; // Asegúrate de que la ruta sea correcta
 import { supabase } from '../utils/supabase';
 import ErrorHandler from './ErrorHandler';
+import { useTheme } from '../utils/ThemeContext.js';
 
 const HomeRec = () => {
   const [user, setUser] = useState(null);
   const [listMaterias, setMaterias] = useState(null);
   const [materiasXPerson, setMateriasXPerson] = useState(null);
+  const { theme } = useTheme();
 
   const [error, setError] = useState('');
 
@@ -70,7 +72,7 @@ const HomeRec = () => {
   // Solo renderiza UserCard si los datos están disponibles
   return (
     <div>
-      <h2 className='rec'>Alumno Del Día</h2>
+      <h2 className='rec' style={{color: theme.text}}>Alumno Del Día</h2>
       <div className="UsCard">
         {user && listMaterias && materiasXPerson ? (
           <UserCard 

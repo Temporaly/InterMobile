@@ -5,6 +5,7 @@ import { FaCalendarAlt } from 'react-icons/fa';
 import CustomCalendar from '../components/Calendar';
 import ErrorHandler from '../components/ErrorHandler';
 import { AuthContext } from '../components/AuthContext';
+import { useTheme } from '../utils/ThemeContext.js';
 
 const CalendarPage = () => {
   const { auth } = useContext(AuthContext);
@@ -13,6 +14,7 @@ const CalendarPage = () => {
   const [events, setEvents] = useState([]); // Array para almacenar eventos
   const [clasesPasadas, setClasesPasadas] = useState([]);
   const [clasesFuturas, setClasesFuturas] = useState([]);
+  const { theme } = useTheme();
 
   const [error, setError] = useState('');
 
@@ -86,7 +88,7 @@ const CalendarPage = () => {
 
   return (
     <Container className="my-5">
-      <h1 className="text-center" style={{ paddingBottom: "5%" }}>
+      <h1 className="text-center" style={{ paddingBottom: "5%", color: theme.text }}>
         <FaCalendarAlt /> Calendario de Clases
       </h1>
       <Row className="justify-content-center">
@@ -96,7 +98,7 @@ const CalendarPage = () => {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <h1 className="text-center" style={{ paddingBottom: "5%" }}>Clases Agendadas</h1>
+        <h1 className="text-center" style={{ paddingBottom: "5%", color: theme.text }}>Clases Agendadas</h1>
         {clasesFuturas.length > 0 ? (
           clasesFuturas.map((clase) => (
             <Col key={clase.ID} md={4} className="mb-4">
@@ -112,12 +114,12 @@ const CalendarPage = () => {
           ))
         ) : (
           <Col md={12} className="text-center">
-            <p>No tienes ninguna clase próxima</p>
+            <p style={{ color: theme.text}}>No tienes ninguna clase próxima</p>
           </Col>
         )}
         {clasesPasadas.length > 0 && (
           <>
-            <h2 className="text-center" style={{ paddingBottom: "5%", color: "red" }}>Clases Pasadas</h2>
+            <h2 className="text-center" style={{ paddingBottom: "5%", color: theme.warnColor }}>Clases Pasadas</h2>
             {clasesPasadas.map((clase) => (
               <Col key={clase.ID} md={4} className="mb-4">
                 <Card style={{ backgroundColor: "#f8d7da" }}> {/* Color rojo claro para las tarjetas */}
